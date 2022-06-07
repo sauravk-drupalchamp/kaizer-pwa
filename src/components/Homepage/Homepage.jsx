@@ -18,15 +18,11 @@ const Homepage = () => {
     <Col xs={24} sm={24} md={24} lg={12} className='homepage-banner'>
       <img src={bannerImage} alt="homepage-banner" />
     </Col>
-    <Col xs={24} sm={24} md={24} lg={12}>
+    <Col xs={24} sm={24} md={24} lg={12} className='form-wrapper'>
     <Form
       name="basic"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
+      layout="vertical"
+      
       initialValues={{
         remember: true,
       }}

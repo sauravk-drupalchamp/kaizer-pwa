@@ -1,3 +1,9 @@
 .ant-col.homepage-banner.ant-col-xs-24.ant-col-sm-24.ant-col-md-24.ant-col-lg-12 img {
     width: 100%;
 }
+
+.ant-col.form-wrapper.ant-col-xs-24.ant-col-sm-24.ant-col-md-24.ant-col-lg-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
