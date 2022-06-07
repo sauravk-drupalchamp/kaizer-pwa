@@ -1,6 +1,6 @@
 import {React, Fragment} from 'react';
 import {Row, Col} from 'antd';
-import './Header.module.css';
+import './Header.css';
 import logo from '../../assets/logo.png';
 
 
