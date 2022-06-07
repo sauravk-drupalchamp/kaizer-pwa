@@ -19,6 +19,8 @@ const Homepage = () => {
       <img src={bannerImage} alt="homepage-banner" />
     </Col>
     <Col xs={24} sm={24} md={24} lg={12} className='form-wrapper'>
+    <h1>Login to account</h1>
+    <span>Please enter your email id and password to continue</span>
     <Form
       name="basic"
       layout="vertical"

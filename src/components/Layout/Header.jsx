@@ -12,7 +12,6 @@ const Header = () => {
       <a href="/"><img src={logo} alt="logo" /></a>
       </Col>
       <Col span={20}>
-        Right
       </Col>
     </Row>
     
