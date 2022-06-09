@@ -1,10 +1,13 @@
-import React from "react";
-import { Col, Row } from "antd";
-import { Button, Checkbox, Form, Input } from 'antd';
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import { Col, Row } from "antd"
+import { Button, Checkbox, Form, Input } from 'antd'
 import bannerImage from '../../assets/homepage-banner.png'
 import './Homepage.css'
 
 const Homepage = () => {
+  // const [ items, setItems ] = useState([]);
+
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -12,6 +15,16 @@ const Homepage = () => {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+
+  useEffect(()=>{
+    axios.get('http://local.learn/node/rest')
+        .then((response) => {
+          console.log(response,'RESPONSE');
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  },[]);
 
   return (
     <Row>
