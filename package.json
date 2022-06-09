@@ -1,5 +1,6 @@
 {
   "name": "kaizer-pwa",
+  "homepage": "http://kaizerstaging.creathing.be",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

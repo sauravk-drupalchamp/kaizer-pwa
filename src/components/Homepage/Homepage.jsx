@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React from "react"
+// import axios from "axios"
 import { Col, Row } from "antd"
 import { Button, Checkbox, Form, Input } from 'antd'
 import bannerImage from '../../assets/homepage-banner.png'
@@ -16,15 +16,15 @@ const Homepage = () => {
     console.log('Failed:', errorInfo);
   };
 
-  useEffect(()=>{
-    axios.get('http://local.learn/node/rest')
-        .then((response) => {
-          console.log(response,'RESPONSE');
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-  },[]);
+  // useEffect(()=>{
+  //   axios.get('http://local.learn/node/rest')
+  //       .then((response) => {
+  //         console.log(response,'RESPONSE');
+  //       })
+  //       .catch(function (error) {
+  //         console.log(error);
+  //       });
+  // },[]);
 
   return (
     <Row>
