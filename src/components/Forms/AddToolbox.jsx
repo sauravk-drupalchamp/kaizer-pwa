@@ -80,7 +80,7 @@ const AddToolbox = () => {
             {/* -----------------------------------------UPLOAD--------------------------------------- */}
             <Form.Item label="Files:">
             <Upload {...props}>
-              <Button icon={<UploadOutlined />}>Upload png only</Button>
+              <Button icon={<UploadOutlined />}>Upload</Button>
             </Upload>
             </Form.Item>
             {/*------------------------------------- LANGUAGE -------------------------------------*/}
