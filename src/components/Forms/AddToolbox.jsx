@@ -8,14 +8,15 @@ const AddToolbox = () => {
   const dateFormat = "YYYY/MM/DD";
   // FILE UPLOAD
   const props = {
+    multiple: true,
     beforeUpload: (file) => {
-      const isPNG = file.type === 'image/png';
+      const isPDF = file.type === 'application/pdf';
   
-      if (!isPNG) {
-        message.error(`${file.name} is not a png file`);
+      if (!isPDF) {
+        message.error(`${file.name} is not a PDF file`);
       }
   
-      return isPNG || Upload.LIST_IGNORE;
+      return isPDF || Upload.LIST_IGNORE;
     },onChange(info) {
       const { status } = info.file;
       if (status !== 'uploading') {
