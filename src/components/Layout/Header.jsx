@@ -20,7 +20,7 @@ const Header = () => {
             <Menu.SubMenu key="Menu" title="Menu" icon={<AppstoreOutlined />}>
               <Menu.Item key="addToolbox"><a href="/add-toolbox">Add Toolbox</a></Menu.Item>
               <Menu.Item key="constructionSites"><a href="/construction-sites">Construction Sites</a></Menu.Item>
-              <Menu.Item key="externalWorker"><a href="/ext-worker">External Worker</a></Menu.Item>
+              <Menu.Item key="externalWorker"><a href="/add-external-worker">External Worker</a></Menu.Item>
             </Menu.SubMenu>
           </Menu>
         </Col>

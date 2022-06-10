@@ -44,6 +44,7 @@ const AddToolbox = () => {
 
   return (
     <Fragment>
+      <h1>Add Toolbox For Construction Site Name</h1>
       <Row className="add-toolbox-wrapper">
         <Col>
           <Form
@@ -116,6 +117,9 @@ const AddToolbox = () => {
                 Add
               </Button>
             </Form.Item>
+
+            <Button type="primary">+</Button><br />
+            <Button type="primary">Save</Button>
           </Form>
         </Col>
       </Row>
