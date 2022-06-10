@@ -6,8 +6,9 @@ import "./AddToolbox.css";
 
 const AddToolbox = () => {
   const dateFormat = "YYYY/MM/DD";
+  const arr = ['Not Identified', 'English', 'French', 'German', 'Spanish'];
   // FILE UPLOAD
-  const props = {
+  const propsUpload = {
     multiple: true,
     beforeUpload: (file) => {
       const isPDF = file.type === 'application/pdf';
@@ -79,7 +80,7 @@ const AddToolbox = () => {
             </Form.Item>
             {/* -----------------------------------------UPLOAD--------------------------------------- */}
             <Form.Item label="Files:">
-            <Upload {...props}>
+            <Upload {...propsUpload}>
               <Button icon={<UploadOutlined />}>Upload</Button>
             </Upload>
             </Form.Item>
@@ -99,11 +100,9 @@ const AddToolbox = () => {
                   .localeCompare(optionB.children.toLowerCase())
               }
             >
-              <Option value="1">Not Identified</Option>
-              <Option value="2">English</Option>
-              <Option value="3">Hindi</Option>
-              <Option value="4">Spanish</Option>
-              <Option value="5">German</Option>
+            {arr.map((item,i)=>{
+              return <Option value={i}>{item}</Option>;
+            })}
             </Select>
             </Form.Item>
 

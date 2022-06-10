@@ -1,7 +1,8 @@
-.ant-col.ant-col-4{
+.header-wrapper .ant-col.ant-col-4{
     border-right: 1px solid gray;
 }
 
-.ant-col.ant-col-4 img {
+.header-wrapper .ant-col.ant-col-4 img {
     float: right;
+    max-height: 46px;
 }
