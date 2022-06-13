@@ -1,10 +1,44 @@
-import { React, Fragment } from "react";
+import { React, Fragment, useEffect } from "react";
 import { Col, Row } from "antd";
 import { Button, DatePicker, Form, Input, Upload, Select, message } from "antd";
 import { InfoCircleOutlined, UploadOutlined } from "@ant-design/icons";
+import events from 'events';
+import ajax from '../../utils/ajax'
 import "./AddToolbox.css";
 
+const emitter = new events.EventEmitter();
+
 const AddToolbox = () => {
+
+  var node = {
+    type: [{
+      target_id: 'article',
+      target_type: 'node_type',
+    }],
+    title: [{
+      value: 'Dummy Title' + Math.floor(Math.random() * 9),
+    }],
+    body: [{
+      value: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+      format: 'plain_text',
+    }],
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect( async () => {
+    try {
+      const axios = await ajax() // wait for an initialized axios object
+      const response = await axios.post('/node', node) // wait for the POST AJAX request to complete
+      console.log('Node created: ', response)
+      emitter.emit('NODE_UPDATED')
+    } catch (e) {
+      console.log(e)
+    }
+    return ()=>{
+      emitter.addListener('NODE_UPDATED', this.refresh)
+    }
+  },[]);
+
   const dateFormat = "YYYY/MM/DD";
   const arr = ['Not Identified', 'English', 'French', 'German', 'Spanish'];
   // FILE UPLOAD
