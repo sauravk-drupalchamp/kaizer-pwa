@@ -11,7 +11,7 @@ const ConstructionSites = () => {
   const tableData = items.map((item, index) => {
     const dateFrom = item.field_date_from;
 
-    const uniqueId = item.field_field_unique;
+    const uniqueId = item.title;
 
     return {
       key: index,
@@ -30,7 +30,7 @@ const ConstructionSites = () => {
       key: "date_from",
     },
     {
-      title: "Unique ID",
+      title: "Site ID",
       dataIndex: "unique_Id",
       key: "unique_Id",
     },
@@ -52,12 +52,11 @@ const ConstructionSites = () => {
       .then((response) => {
         setItems(response.data);
         setIsLoaded(true);
-        // console.log(items)
       })
       .catch((err) => {
         console.warn(err);
       });
-  }, []);
+  },[]);
 
   if (!isLoaded) {
     <Spin size="large" />;
