@@ -1,5 +1,5 @@
 import { React, Fragment } from "react";
-import { Homepage, Header, Footer, AddToolbox, ConstructionSites, AddExtWorker } from "./components";
+import { Homepage, Header, AddToolbox, ConstructionSites, AddExtWorker } from "./components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css'
 
@@ -14,7 +14,6 @@ const App = () => {
           <Route path="/construction-sites" exact element={<ConstructionSites />} />
           <Route path="/add-external-worker" exact element={<AddExtWorker />} />
         </Routes>
-        <Footer />
       </Router>
     </Fragment>
   );
