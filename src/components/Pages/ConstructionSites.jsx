@@ -1,71 +1,81 @@
-import { React, useEffect } from "react";
+import { Fragment, React, useEffect, useState } from "react";
+import { Table, Spin, Row, Col, Progress } from "antd";
+import { EyeOutlined } from '@ant-design/icons';
 import Config from "../../config";
 import axios from "axios";
 
 const ConstructionSites = () => {
+  const [items, setItems] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const tableData = items.map((item, index) => {
+    const dateFrom = item.field_date_from;
+
+    const uniqueId = item.field_field_unique;
+
+    return {
+      key: index,
+      date_from: dateFrom,
+      unique_Id: uniqueId,
+      tool_sign: <Progress percent={Math.floor(Math.random()*100)} size="small" />,
+      action_view: <EyeOutlined />,
+
+    };
+  });
+
+  const columns = [
+    {
+      title: "Date From",
+      dataIndex: "date_from",
+      key: "date_from",
+    },
+    {
+      title: "Unique ID",
+      dataIndex: "unique_Id",
+      key: "unique_Id",
+    },
+    {
+      title: "Toolboxes signed",
+      dataIndex: "tool_sign",
+      key: "tool_sign"
+    },
+    {
+      title: "Actions",
+      dataIndex: "action_view",
+      key: "action_view"
+    }
+  ];
+
   useEffect(() => {
-    var username = "admin";
-    var password = "admin";
-    var basicAuth = "Basic " + btoa(username + ":" + password);
-
     axios
-      .get(`${Config.drupal_local_url}/session/token`)
-      .then((res) => {
-        console.warn(res.data);
-
-        const headers = {
-          "Content-Type": "application/hal+json",
-          "X-CSRF-Token": res.data,
-          "Access-Control-Expose-Headers": "*",
-          "Authorization": basicAuth,
-        };
-
-        axios
-          .post(
-            `${Config.drupal_local_url}/node/10`,
-            {
-              _links: {
-                type: {
-                  href: "http://drupal-121194-391381.cloudwaysapps.com/rest/type/node/page",
-                },
-              },
-              title: [
-                {
-                  value: "My first page",
-                },
-              ],
-            },
-            {
-              headers,
-            }
-          )
-          .then((response) => (console.log(response)));
+      .get(`${Config.drupal_live_url}/construction-sites`)
+      .then((response) => {
+        setItems(response.data);
+        setIsLoaded(true);
+        // console.log(items)
       })
       .catch((err) => {
         console.warn(err);
       });
-    // var node = {
-    //   type: [{
-    //     target_id: 'article',
-    //     target_type: 'node_type',
-    //   }],
-    //   title: [{
-    //     value: 'Dummy',
-    //   }],
-    //   body: [{
-    //     value: 'Dummy Body',
-    //     format: 'plain_text',
-    //   }],
-    // };
-
-    // axios.post(`${Config.drupal_local_url}/node`, node).then((res)=>{
-    //   console.log(res,'=====RESPONSE')
-    // }).catch((err)=>{
-    //   console.log(err)
-    // })
   }, []);
 
-  return <h1>ConstructionSites</h1>;
+  if (!isLoaded) {
+    <Spin size="large" />;
+  } else {
+    return (
+      <Fragment>
+        <Row>
+        <h1>Construction Sites</h1>
+        <Col span={16}>
+        <h5>Construction Sites</h5>
+        <Table dataSource={tableData} columns={columns} />
+        </Col>
+        </Row>
+        
+        
+      </Fragment>
+    );
+  }
 };
 
 export default ConstructionSites;
