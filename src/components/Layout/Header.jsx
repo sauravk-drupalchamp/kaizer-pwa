@@ -1,7 +1,9 @@
 import { React, Fragment } from "react";
-import { Row, Col, Menu } from "antd";
+import { Row, Col, Menu, Button } from "antd";
 import { Avatar } from 'antd';
-import { AppstoreOutlined, UserOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, UserOutlined, PoweroffOutlined } from '@ant-design/icons'
+import axios from 'axios'
+import Config from "../../config";
 import "./Header.css";
 import logo from "../../assets/logo.png";
 
@@ -11,6 +13,15 @@ const Header = () => {
     alert(window.location.pathname);
   }
 
+  const handleLogout = ()=>{
+    const logoutToken = window.localStorage.getItem('logout_token');
+    console.log(logoutToken);
+    axios.post(`${Config.drupal_live_url}/user/logout?_format=json&token=${logoutToken}`).then((response)=>{
+      console.log(response)
+    }).catch((err)=>{
+      console.log(err);
+    })
+  }
   return (
     <Fragment>
       <Row className="header-wrapper">
@@ -30,6 +41,11 @@ const Header = () => {
         </Col>
         <Col span={4}>
         <Avatar onClick={handleClick} size="large" icon={<UserOutlined />} />
+        <Button
+          type="primary"
+          icon={<PoweroffOutlined />}
+          onClick={handleLogout}
+        />
         </Col>
       </Row>
     </Fragment>

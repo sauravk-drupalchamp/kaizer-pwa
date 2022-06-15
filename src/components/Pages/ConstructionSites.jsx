@@ -1,14 +1,11 @@
 import { Fragment, React, useEffect, useState } from "react";
 import { Table, Spin, Row, Col, Progress } from "antd";
 import { EyeOutlined } from '@ant-design/icons';
-import $ from 'jquery';
 import Config from "../../config";
 import axios from "axios";
 
 const ConstructionSites = () => {
-  $(document).ready(()=>{
-    console.log($(".ant-progress-bg").css("width"))
-  })
+
   const [items, setItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
