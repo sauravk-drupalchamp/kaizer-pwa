@@ -1,10 +1,14 @@
 import { Fragment, React, useEffect, useState } from "react";
 import { Table, Spin, Row, Col, Progress } from "antd";
 import { EyeOutlined } from '@ant-design/icons';
+import $ from 'jquery';
 import Config from "../../config";
 import axios from "axios";
 
 const ConstructionSites = () => {
+  $(document).ready(()=>{
+    console.log($(".ant-progress-bg").css("width"))
+  })
   const [items, setItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -12,12 +16,12 @@ const ConstructionSites = () => {
     const dateFrom = item.field_date_from;
 
     const uniqueId = item.title;
-
+    const per = Math.floor(Math.random()*100);
     return {
       key: index,
       date_from: dateFrom,
       unique_Id: uniqueId,
-      tool_sign: <Progress percent={Math.floor(Math.random()*100)} size="small" />,
+      tool_sign: <Progress percent={per} status={per < 50 ? "exception" : "active"} size="small" />,
       action_view: <EyeOutlined />,
 
     };
