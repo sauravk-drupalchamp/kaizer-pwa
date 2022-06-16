@@ -15,8 +15,22 @@ const Header = () => {
 
   const handleLogout = ()=>{
     const logoutToken = window.localStorage.getItem('logout_token');
-    console.log(logoutToken);
-    axios.post(`${Config.drupal_live_url}/user/logout?_format=json&token=${logoutToken}`).then((response)=>{
+    const crsfToken = window.localStorage.getItem('crsf_token');
+    // console.log(logoutToken);
+    // axios.post(`${Config.drupal_live_url}/user/logout?_format=json&token=${logoutToken}`).then((response)=>{
+    //   console.log(response)
+    // }).catch((err)=>{
+    //   console.log(err);
+    // })
+
+    axios({
+      method: "post",
+      url: `${Config.drupal_live_url}/user/logout?_format=json&token=${logoutToken}`,
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": crsfToken,
+      },
+    }).then((response)=>{
       console.log(response)
     }).catch((err)=>{
       console.log(err);
