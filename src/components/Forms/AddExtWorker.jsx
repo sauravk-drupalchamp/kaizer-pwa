@@ -1,6 +1,7 @@
 import { React, Fragment } from "react";
 import { Col, Row } from "antd";
 import { Button, Form, Input } from "antd";
+import './AddExternalWorker.css';
 
 const AddExtWorker = () => {
       // FORM SUBMISSION
