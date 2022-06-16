@@ -15,7 +15,7 @@ const App = () => {
   const ctx = useContext(AuthContext);
   return (
     <Fragment>
-      <AuthContext.Provider value={ctx.isLoggedIn}>
+      <AuthContext.Provider value={{isLoggedIn:ctx.isLoggedIn}}>
         <Router>
           <Header />
           <Routes>
