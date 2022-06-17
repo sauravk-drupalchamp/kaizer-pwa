@@ -4,9 +4,10 @@ import {
   Header,
   AddToolbox,
   ConstructionSites,
-  AddExtWorker,
+  AddExtWorker, User
 } from "./components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {message} from 'antd'
 // import AuthContext from "./context/auth-context";
 import "./App.css";
 
@@ -26,7 +27,8 @@ const App = () => {
   const loginHandler = () =>{
     // setIsLoggedIn(true);
     window.location.href = '/construction-sites';
-    console.log("Login Handler")
+    // console.log("Login Handler")
+    message.success("Successfully Logged In")
   }
   const logoutHandler = ()=>{
     console.log(isLoggedIn)
@@ -53,6 +55,11 @@ const App = () => {
               path="/add-external-worker"
               exact
               element={isLoggedIn && <AddExtWorker />}
+            />
+            <Route
+              path="/user"
+              exact
+              element={isLoggedIn && <User />}
             />
           </Routes>
         </Router>

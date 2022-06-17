@@ -11,10 +11,6 @@ const Homepage = (props) => {
     const userName = values.username;
     const passWord = values.password;
 
-    const success = () => {
-      message.success('Succesfully Logged IN');
-    };
-
     const error = () => {
       message.error('Invalid Username/Password');
     };
@@ -49,14 +45,13 @@ const Homepage = (props) => {
             // console.log("user_id====", user_id);
 
             axios.get(`${Config.drupal_live_url}/user/${user_id}?_format=json`).then((roleResponse)=>{
-              console.log(roleResponse);
+              console.log("roleResponse",roleResponse.roles.target_id);
             })
 
             if(crsf_token && logout_token){
               props.onLogin()
               localStorage.setItem("crsf_token", crsf_token);
               localStorage.setItem("logout_token", logout_token);
-              success();
             }else{
               error();
             }

@@ -1,20 +1,16 @@
 import { React, Fragment, useContext } from "react";
 import { Row, Col, Menu, Button } from "antd";
 import { Avatar } from "antd";
+import {Link} from 'react-router-dom'
 import {
   AppstoreOutlined,
   UserOutlined,
   PoweroffOutlined,
 } from "@ant-design/icons";
-import AuthContext from "../../context/auth-context";
 import "./Header.css";
 import logo from "../../assets/logo.png";
 
 const Header = (props) => {
-  const ctx = useContext(AuthContext);
-  const handleClick = () => {
-    alert(window.location.pathname);
-  };
 
   // const handleLogout = () => {
   //   const logoutToken = window.localStorage.getItem("logout_token");
@@ -49,22 +45,22 @@ const Header = (props) => {
     <Fragment>
       <Row className="header-wrapper">
         <Col span={4}>
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="logo" />
-          </a>
+          </Link>
         </Col>
         {props.isLoggedIn && (
           <Col span={16}>
             <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
               <Menu.Item key="constructionSites">
-                <a href="/construction-sites">Construction Sites</a>
+                <Link to="/construction-sites">Construction Sites</Link>
               </Menu.Item>
               <Menu.SubMenu key="Menu" title="Menu" icon={<AppstoreOutlined />}>
                 <Menu.Item key="addToolbox">
-                  <a href="/add-toolbox">Add Toolbox</a>
+                  <Link to="/add-toolbox">Add Toolbox</Link>
                 </Menu.Item>
                 <Menu.Item key="externalWorker">
-                  <a href="/add-external-worker">External Worker</a>
+                  <Link to="/add-external-worker">External Worker</Link>
                 </Menu.Item>
               </Menu.SubMenu>
             </Menu>
@@ -72,11 +68,12 @@ const Header = (props) => {
         )}
         {props.isLoggedIn && (
           <Col span={4}>
+            <Link to="/user">
             <Avatar
-              onClick={handleClick}
               size="large"
               icon={<UserOutlined />}
             />
+            </Link>
             <Button
               type="primary"
               icon={<PoweroffOutlined />}
