@@ -48,7 +48,11 @@ const Homepage = (props) => {
             // console.log("current_user====", current_user);
             // console.log("user_id====", user_id);
 
-            if(user_id === '3'){
+            axios.get(`${Config.drupal_live_url}/user/${user_id}?_format=json`).then((roleResponse)=>{
+              console.log(roleResponse);
+            })
+
+            if(crsf_token && logout_token){
               props.onLogin()
               localStorage.setItem("crsf_token", crsf_token);
               localStorage.setItem("logout_token", logout_token);
