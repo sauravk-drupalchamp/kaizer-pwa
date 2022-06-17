@@ -24,7 +24,7 @@ const App = () => {
   }, []);
 
   const loginHandler = () =>{
-    setIsLoggedIn(true);
+    // setIsLoggedIn(true);
     window.location.href = '/construction-sites';
     console.log("Login Handler")
   }
@@ -42,7 +42,7 @@ const App = () => {
         <Router>
           <Header isLoggedIn ={isLoggedIn} onLogout={logoutHandler}/>
           <Routes>
-            <Route path={'/'} exact element={<Homepage onLogin={loginHandler}/>} />
+            <Route path={'/'} exact element={isLoggedIn ? <ConstructionSites /> : <Homepage onLogin={loginHandler}/>} />
             <Route path="/add-toolbox" exact element={isLoggedIn && <AddToolbox />} />
             <Route
               path="/construction-sites"
