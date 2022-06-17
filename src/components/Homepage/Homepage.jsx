@@ -6,7 +6,7 @@ import Config from "../../config";
 import bannerImage from "../../assets/homepage-banner.png";
 import "./Homepage.css";
 
-const Homepage = () => {
+const Homepage = (props) => {
   const onFinish = (values) => {
     const userName = values.username;
     const passWord = values.password;
@@ -40,14 +40,16 @@ const Homepage = () => {
             console.log(response);
             const crsf_token = response.data.csrf_token;
             const logout_token = response.data.logout_token;
-            const current_user = response.data.current_user.name;
+            // const current_user = response.data.current_user.name;
             const user_id = response.data.current_user.uid;
 
             // console.log("crsf_token====", crsf_token);
             // console.log("logout_token====", logout_token);
             // console.log("current_user====", current_user);
             // console.log("user_id====", user_id);
-            if(logout_token){
+
+            if(user_id === '3'){
+              props.onLogin()
               localStorage.setItem("crsf_token", crsf_token);
               localStorage.setItem("logout_token", logout_token);
               success();
