@@ -4,7 +4,7 @@ import {
   Header,
   AddToolbox,
   ConstructionSites,
-  AddExtWorker, User
+  AddExtWorker, User, ConstructionSitesDetails
 } from "./components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {message} from 'antd'
@@ -60,6 +60,11 @@ const App = () => {
               path="/user"
               exact
               element={isLoggedIn && <User />}
+            />
+            <Route
+              path="/construction-sites-detail"
+              exact
+              element={isLoggedIn && <ConstructionSitesDetails />}
             />
           </Routes>
         </Router>

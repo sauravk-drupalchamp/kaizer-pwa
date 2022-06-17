@@ -1,8 +1,17 @@
 import React from 'react'
+import { Skeleton } from 'antd'
 
 const User = () => {
   return (
-    <div>User</div>
+    <React.Fragment>
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+    </React.Fragment>
   )
 }
 
