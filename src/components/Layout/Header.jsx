@@ -53,7 +53,7 @@ const Header = (props) => {
           <Col span={16}>
             <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
               <Menu.Item key="constructionSites">
-                <Link to="/construction-sites">Construction Sites</Link>
+                <Link to="/">Construction Sites</Link>
               </Menu.Item>
               <Menu.SubMenu key="Menu" title="Menu" icon={<AppstoreOutlined />}>
                 <Menu.Item key="addToolbox">
