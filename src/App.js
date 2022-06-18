@@ -62,7 +62,7 @@ const App = () => {
               element={isLoggedIn && <User />}
             />
             <Route
-              path="/construction-sites-detail"
+              path="/construction-sites-detail/:id"
               exact
               element={isLoggedIn && <ConstructionSitesDetails />}
             />

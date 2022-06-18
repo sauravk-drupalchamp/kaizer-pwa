@@ -26,7 +26,7 @@ const ConstructionSites = () => {
         />
       ),
       action_view: (
-        <Link to="/construction-sites-detail">
+        <Link to={`construction-sites-detail/${uniqueId}`}>
           <EyeOutlined />
         </Link>
       ),
