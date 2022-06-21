@@ -4,6 +4,7 @@ import GeneralInfo from "./GeneralInfo";
 import { Row, Col } from "antd";
 import Tolboxes from "./Tolboxes";
 import Workers from "./Workers";
+import './ConstructionSitesDetails.css'
 
 const ConstructionSitesDetails = () => {
   const siteID = useParams();
