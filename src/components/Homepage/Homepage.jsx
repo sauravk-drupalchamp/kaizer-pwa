@@ -28,8 +28,8 @@ const Homepage = (props) => {
             "X-CSRF-Token": res.data,
           },
           data: {
-            name: userName,
-            pass: passWord,
+            "name": userName,
+            "pass": passWord,
           },
         })
           .then((response) => {
@@ -45,7 +45,7 @@ const Homepage = (props) => {
             // console.log("user_id====", user_id);
 
             axios.get(`${Config.drupal_live_url}/user/${user_id}?_format=json`).then((roleResponse)=>{
-              console.log("roleResponse",roleResponse.roles.target_id);
+              console.log("roleResponse",roleResponse);
             })
 
             if(crsf_token && logout_token){

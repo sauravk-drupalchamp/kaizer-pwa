@@ -26,7 +26,7 @@ const App = () => {
 
   const loginHandler = () =>{
     // setIsLoggedIn(true);
-    window.location.href = '/construction-sites';
+    window.location.href = '/';
     // console.log("Login Handler")
     message.success("Successfully Logged In")
   }
