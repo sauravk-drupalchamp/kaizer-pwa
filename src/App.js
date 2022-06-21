@@ -25,18 +25,13 @@ const App = () => {
   }, []);
 
   const loginHandler = () =>{
-    // setIsLoggedIn(true);
     window.location.href = '/';
-    // console.log("Login Handler")
     message.success("Successfully Logged In")
   }
   const logoutHandler = ()=>{
-    console.log(isLoggedIn)
-    window.location.href = '/';
     localStorage.removeItem('crsf_token');
     localStorage.removeItem('logout_token');
     setIsLoggedIn(false)
-    console.log(isLoggedIn)
   }
   return (
     <Fragment>
