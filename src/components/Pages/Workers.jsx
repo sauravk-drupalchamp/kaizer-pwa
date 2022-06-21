@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Config from "../../config";
+import { Link } from 'react-router-dom'
 import { Button } from 'antd'
 import axios from "axios";
 
@@ -26,7 +27,7 @@ const Workers = (props) => {
       ) : (
         <div className="worker-info-wrapper">
         <h4>Worker Info</h4>
-        <Button type="primary">Add Worker</Button>
+        <Link to="/add-external-worker"><Button type="primary">Add Worker</Button></Link>
         <hr />
           {workerInfo.map((data,index) => {
             return (

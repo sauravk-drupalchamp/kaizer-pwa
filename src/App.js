@@ -40,7 +40,7 @@ const App = () => {
           <Header isLoggedIn ={isLoggedIn} onLogout={logoutHandler}/>
           <Routes>
             <Route path={'/'} exact element={isLoggedIn ? <ConstructionSites /> : <Homepage onLogin={loginHandler}/>} />
-            <Route path="/add-toolbox" exact element={isLoggedIn && <AddToolbox />} />
+            <Route path={"/add-toolbox/:id"} exact element={isLoggedIn && <AddToolbox />} />
             {/* <Route
               path="/construction-sites"
               exact

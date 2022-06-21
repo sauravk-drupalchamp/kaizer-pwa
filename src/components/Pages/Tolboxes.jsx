@@ -1,4 +1,6 @@
 import { React, useState, useEffect } from "react";
+import { Button } from 'antd'
+import { Link } from 'react-router-dom'
 import Config from "../../config";
 import axios from "axios";
 
@@ -25,7 +27,7 @@ const Tolboxes = (props) => {
   ) : (
     <div className="toolboxes-info-wrapper">
     <h4>Toolboxes Info</h4>
-    <hr />
+    <Link to={`/add-toolbox/${props.siteID}`}><Button type="primary">+</Button></Link><hr />
       {toolboxesInfo.map((data,index) => {
         return (
           <div key={index}>

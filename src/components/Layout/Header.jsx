@@ -1,7 +1,7 @@
 import { React, Fragment } from "react";
 import { Row, Col, Menu, Button } from "antd";
 import { Avatar } from "antd";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import {
   AppstoreOutlined,
   UserOutlined,
@@ -11,7 +11,6 @@ import "./Header.css";
 import logo from "../../assets/logo.png";
 
 const Header = (props) => {
-
   // const handleLogout = () => {
   //   const logoutToken = window.localStorage.getItem("logout_token");
   //   const crsfToken = window.localStorage.getItem("crsf_token");
@@ -55,20 +54,50 @@ const Header = (props) => {
               <Menu.Item key="constructionSites">
                 <Link to="/">Construction Sites</Link>
               </Menu.Item>
-              <Menu.SubMenu key="Menu" title="Menu" icon={<AppstoreOutlined />}>
+              <Menu.Item disabled="true" key="archive">
+                Archive
+              </Menu.Item>
+              {/* <Menu.SubMenu key="Menu" title="Menu" icon={<AppstoreOutlined />}>
                 <Menu.Item key="addToolbox">
                   <Link to="/add-toolbox">Add Toolbox</Link>
                 </Menu.Item>
                 <Menu.Item key="externalWorker">
                   <Link to="/add-external-worker">External Worker</Link>
                 </Menu.Item>
-              </Menu.SubMenu>
+              </Menu.SubMenu> */}
             </Menu>
           </Col>
         )}
         {props.isLoggedIn && (
           <Col span={4}>
-            <Link to="/user">
+            <Menu mode="horizontal">
+              <Menu.SubMenu key="Menu" title="Menu" icon={<AppstoreOutlined />}>
+                <Menu.Item key="user">
+                  <Link to="/user">
+                    <Button
+                    type="secondary"
+                    icon={<UserOutlined />}
+                    onClick={props.onLogout}
+                    block
+                  >
+                    User
+                  </Button>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="logout">
+                  <Button
+                    type="primary"
+                    icon={<PoweroffOutlined />}
+                    onClick={props.onLogout}
+                    block
+                  >
+                    Logout
+                  </Button>
+                </Menu.Item>
+              </Menu.SubMenu>
+            </Menu>
+
+            {/* <Link to="/user">
             <Avatar
               size="large"
               icon={<UserOutlined />}
@@ -78,7 +107,7 @@ const Header = (props) => {
               type="primary"
               icon={<PoweroffOutlined />}
               onClick={props.onLogout}
-            />
+            /> */}
           </Col>
         )}
       </Row>
