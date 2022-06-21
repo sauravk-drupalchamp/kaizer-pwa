@@ -1,9 +1,8 @@
 import { React, Fragment } from "react";
 import { Row, Col, Menu, Button } from "antd";
-import { Avatar } from "antd";
 import { Link } from "react-router-dom";
 import {
-  AppstoreOutlined,
+  SettingOutlined,
   UserOutlined,
   PoweroffOutlined,
 } from "@ant-design/icons";
@@ -57,27 +56,18 @@ const Header = (props) => {
               <Menu.Item disabled="true" key="archive">
                 Archive
               </Menu.Item>
-              {/* <Menu.SubMenu key="Menu" title="Menu" icon={<AppstoreOutlined />}>
-                <Menu.Item key="addToolbox">
-                  <Link to="/add-toolbox">Add Toolbox</Link>
-                </Menu.Item>
-                <Menu.Item key="externalWorker">
-                  <Link to="/add-external-worker">External Worker</Link>
-                </Menu.Item>
-              </Menu.SubMenu> */}
             </Menu>
           </Col>
         )}
         {props.isLoggedIn && (
           <Col span={4}>
             <Menu mode="horizontal">
-              <Menu.SubMenu key="Menu" title="Menu" icon={<AppstoreOutlined />}>
+              <Menu.SubMenu key="Setting" title="Menu" icon={<SettingOutlined  />}>
                 <Menu.Item key="user">
                   <Link to="/user">
                     <Button
                     type="secondary"
                     icon={<UserOutlined />}
-                    onClick={props.onLogout}
                     block
                   >
                     User
@@ -96,18 +86,6 @@ const Header = (props) => {
                 </Menu.Item>
               </Menu.SubMenu>
             </Menu>
-
-            {/* <Link to="/user">
-            <Avatar
-              size="large"
-              icon={<UserOutlined />}
-            />
-            </Link>
-            <Button
-              type="primary"
-              icon={<PoweroffOutlined />}
-              onClick={props.onLogout}
-            /> */}
           </Col>
         )}
       </Row>
