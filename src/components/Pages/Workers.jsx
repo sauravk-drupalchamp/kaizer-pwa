@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import Config from "../../config";
-import { Space, DatePicker, Select, Button, Form } from "antd";
+import { Space, DatePicker, Select, Button, Form, Table, Progress } from "antd";
+import { EyeOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -9,6 +10,8 @@ const Workers = (props) => {
   const [workerInfo, setWorkerInfo] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const workerInfoUrl = `${Config.drupal_live_url}/workers-listing-rest-api/${props.siteID}`;
+
+  const { tableData, columns } = getTableData();
 
   const onFinish = (values) => {
     console.log("Success:", values);
@@ -37,7 +40,7 @@ const Workers = (props) => {
       .catch((workerInfoError) => {
         console.log(workerInfoError, "workerInfoError");
       });
-  }, []);
+  }, [workerInfoUrl]);
 
   return !isLoaded ? (
     <h1>Loading .....</h1>
@@ -107,16 +110,54 @@ const Workers = (props) => {
         </Space>
       </Space>
       <hr />
-      {workerInfo.map((data, index) => {
-        return (
-          <div key={index}>
-            <p>{data.title}</p>
-            <p>{data.field_field_unique}</p>
-          </div>
-        );
-      })}
+      <Table dataSource={tableData} columns={columns} />
     </div>
   );
+
+  function getTableData() {
+    const tableData = workerInfo.map((item, index) => {
+      const title = item.title;
+      const unique_Id = item.field_field_unique;
+      const per = Math.floor(Math.random() * 100);
+
+      return {
+        key: index,
+        name: title,
+        id: unique_Id,
+        tool_sign: (
+          <Progress
+            percent={per}
+            status={per < 50 ? "exception" : "active"}
+            size="small" />
+        ),
+        action_view: <EyeOutlined />,
+      };
+    });
+
+    const columns = [
+      {
+        title: "Name",
+        dataIndex: "name",
+        key: "name",
+      },
+      {
+        title: "ID",
+        dataIndex: "id",
+        key: "id",
+      },
+      {
+        title: "Toolboxes signed",
+        dataIndex: "tool_sign",
+        key: "tool_sign",
+      },
+      {
+        title: "Actions",
+        dataIndex: "action_view",
+        key: "action_view",
+      },
+    ];
+    return { tableData, columns };
+  }
 };
 
 export default Workers;

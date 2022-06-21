@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
-import { Button } from 'antd'
+import { Button, Table } from 'antd'
+import { EyeOutlined } from "@ant-design/icons";
 import { Link } from 'react-router-dom'
 import Config from "../../config";
 import axios from "axios";
@@ -8,7 +9,7 @@ const Tolboxes = (props) => {
     const [toolboxesInfo, setToolboxesInfo] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const toolboxesInfoUrl = `${Config.drupal_live_url}/toolboxes-listing-rest-api/${props.siteID}`;
-
+    const { tableData, columns } = getTableData();
     useEffect(() => {
         axios
           .get(toolboxesInfoUrl)
@@ -20,7 +21,7 @@ const Tolboxes = (props) => {
           .catch((toolboxesInfoError) => {
             console.log(toolboxesInfoError, "toolboxesInfoError");
           });
-      }, []);
+      }, [toolboxesInfoUrl]);
 
     return !isLoaded ? (
     <h1>Loading .....</h1>
@@ -28,16 +29,43 @@ const Tolboxes = (props) => {
     <div className="toolboxes-info-wrapper">
     <h4>Toolboxes Info</h4>
     <Link to={`/add-toolbox/${props.siteID}`}><Button type="primary">+</Button></Link><hr />
-      {toolboxesInfo.map((data,index) => {
-        return (
-          <div key={index}>
-            <p>{data.title}</p>
-            <p>{data.field_date_from}</p>
-          </div>
-        );
-      })}
+      <Table dataSource={tableData} columns={columns} />
     </div>
   );
+  
+  function getTableData() {
+    const tableData = toolboxesInfo.map((item, index) => {
+      const title = item.title;
+      const date_from = item.field_date_from;
+
+      return {
+        key: index,
+        name: title,
+        date_from: date_from,
+        action_view: <EyeOutlined />,
+      };
+    });
+
+    const columns = [
+      {
+        title: "Name",
+        dataIndex: "name",
+        key: "name",
+      },
+      {
+        title: "Date From",
+        dataIndex: "date_from",
+        key: "date_from",
+      },
+      {
+        title: "Actions",
+        dataIndex: "action_view",
+        key: "action_view",
+      },
+    ];
+    return { tableData, columns };
+  }
+
 }
 
 export default Tolboxes
