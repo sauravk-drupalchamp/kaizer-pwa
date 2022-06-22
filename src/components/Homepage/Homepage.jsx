@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Col, Row, message } from "antd";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import Config from "../../config";
 import bannerImage from "../../assets/homepage-banner.png";
 import "./Homepage.css";

@@ -1,6 +1,7 @@
-import { React, Fragment } from "react";
+import { React, Fragment, useEffect } from "react";
 import { Row, Col, Menu, Button } from "antd";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 import {
   SettingOutlined,
   UserOutlined,
@@ -9,7 +10,22 @@ import {
 import "./Header.css";
 import logo from "../../assets/logo.png";
 
-const Header = (props) => {
+// const Header = (props) => {
+//   const url = `http://drupaldev.kaizerstaging.creathing.be/test/user/1`;
+
+//   useEffect(()=>{
+//     axios.get(url,{
+//       auth:{
+//         username: 'sp1',
+//         password: 'sp1##'
+//       }
+//     }).then((res)=>{
+//       console.log(res)
+//     }).catch((err)=>{
+//       console.log(err)
+//     })
+//   },[])
+
   // const handleLogout = () => {
   //   const logoutToken = window.localStorage.getItem("logout_token");
   //   const crsfToken = window.localStorage.getItem("crsf_token");
