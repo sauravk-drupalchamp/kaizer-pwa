@@ -12,7 +12,7 @@ const Homepage = (props) => {
     const passWord = values.password;
 
     const error = () => {
-      message.error('Invalid Username/Password');
+      message.error("Invalid Username/Password");
     };
 
     axios
@@ -28,12 +28,12 @@ const Homepage = (props) => {
             "X-CSRF-Token": res.data,
           },
           data: {
-            "name": userName,
-            "pass": passWord,
+            name: userName,
+            pass: passWord,
           },
         })
           .then((response) => {
-            console.log(response);
+            // console.log(response);
             const crsf_token = response.data.csrf_token;
             const logout_token = response.data.logout_token;
             // const current_user = response.data.current_user.name;
@@ -44,18 +44,26 @@ const Homepage = (props) => {
             // console.log("current_user====", current_user);
             // console.log("user_id====", user_id);
 
-            axios.get(`${Config.drupal_live_url}/user/${user_id}?_format=json`).then((roleResponse)=>{
-              console.log("roleResponse",roleResponse);
-            })
+            // console.log(`${Config.drupal_live_url}/rest/user/${user_id}`);
 
-            if(crsf_token && logout_token){
-              props.onLogin()
-              localStorage.setItem("crsf_token", crsf_token);
-              localStorage.setItem("logout_token", logout_token);
-            }else{
-              error();
-            }
-            
+            axios
+              .get(`${Config.drupal_live_url}/rest/user/${user_id}`)
+              .then((roleResponse) => {
+                // console.log(
+                //   "roleResponse",
+                //   roleResponse.data[0].roles_target_id
+                // );
+                if (roleResponse.data[0].roles_target_id === "Supervisor") {
+                  props.onLogin();
+                  localStorage.setItem("crsf_token", crsf_token);
+                  localStorage.setItem("logout_token", logout_token);
+                } else {
+                  error();
+                }
+              })
+              .catch((roleResponseError) => {
+                console.log("roleResponseError", roleResponseError);
+              });
           })
           .catch((err) => {
             console.log("Error", err);
@@ -89,7 +97,7 @@ const Homepage = (props) => {
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          autoComplete="off"
+          autoComplete="on"
         >
           <Form.Item
             label="Username"
@@ -114,7 +122,7 @@ const Homepage = (props) => {
               },
             ]}
           >
-            <Input.Password />
+            <Input.Password autoComplete="true" />
           </Form.Item>
 
           <Form.Item
@@ -125,7 +133,7 @@ const Homepage = (props) => {
               span: 16,
             }}
           >
-            <Checkbox>Remember me</Checkbox>
+          <small>Forgot Password?</small>
           </Form.Item>
 
           <Form.Item

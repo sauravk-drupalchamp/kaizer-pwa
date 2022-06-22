@@ -47,11 +47,10 @@ const AddToolbox = () => {
 
   return (
     <Fragment>
-      <h1>Add Toolbox For {constructionSite.id}</h1>
       <Row className="add-toolbox-wrapper">
         <Col span={20}>
           <h1 className="toolbox-heading">
-            Add Toolbox For Construction Site Name
+            Add Toolbox For {constructionSite.id}
           </h1>
         </Col>
         <Col span={20} className="toolbox-column">
