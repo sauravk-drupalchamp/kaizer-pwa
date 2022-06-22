@@ -1,12 +1,14 @@
-import { React, Fragment } from 'react'
-import { Col, Row } from 'antd'
-import { Button, DatePicker, Form, Input, Upload, Select, message } from 'antd'
-import { InfoCircleOutlined, UploadOutlined } from '@ant-design/icons'
-import './AddToolbox.css'
+import { React, Fragment } from "react";
+import { Col, Row } from "antd";
+import { Button, DatePicker, Form, Input, Upload, Select, message } from "antd";
+import { useParams } from "react-router-dom";
+import { InfoCircleOutlined, UploadOutlined } from "@ant-design/icons";
+import "./AddToolbox.css";
 
 const AddToolbox = () => {
-  const dateFormat = 'YYYY/MM/DD'
-  const arr = ['Not Identified', 'English', 'French', 'German', 'Spanish']
+  const dateFormat = "YYYY/MM/DD";
+  const arr = ['Not Identified', 'English', 'French', 'German', 'Spanish'];
+  const constructionSite = useParams();
   // FILE UPLOAD
   const propsUpload = {
     multiple: true,
@@ -45,6 +47,7 @@ const AddToolbox = () => {
 
   return (
     <Fragment>
+      <h1>Add Toolbox For {constructionSite.id}</h1>
       <Row className="add-toolbox-wrapper">
         <Col span={20}>
           <h1 className="toolbox-heading">

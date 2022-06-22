@@ -6,14 +6,10 @@ import Config from "../../config";
 import bannerImage from "../../assets/homepage-banner.png";
 import "./Homepage.css";
 
-const Homepage = () => {
+const Homepage = (props) => {
   const onFinish = (values) => {
     const userName = values.username;
     const passWord = values.password;
-
-    const success = () => {
-      message.success('Succesfully Logged IN');
-    };
 
     const error = () => {
       message.error('Invalid Username/Password');
@@ -32,25 +28,30 @@ const Homepage = () => {
             "X-CSRF-Token": res.data,
           },
           data: {
-            name: userName,
-            pass: passWord,
+            "name": userName,
+            "pass": passWord,
           },
         })
           .then((response) => {
             console.log(response);
             const crsf_token = response.data.csrf_token;
             const logout_token = response.data.logout_token;
-            const current_user = response.data.current_user.name;
+            // const current_user = response.data.current_user.name;
             const user_id = response.data.current_user.uid;
 
             // console.log("crsf_token====", crsf_token);
             // console.log("logout_token====", logout_token);
             // console.log("current_user====", current_user);
             // console.log("user_id====", user_id);
-            if(logout_token){
+
+            axios.get(`${Config.drupal_live_url}/user/${user_id}?_format=json`).then((roleResponse)=>{
+              console.log("roleResponse",roleResponse);
+            })
+
+            if(crsf_token && logout_token){
+              props.onLogin()
               localStorage.setItem("crsf_token", crsf_token);
               localStorage.setItem("logout_token", logout_token);
-              success();
             }else{
               error();
             }
