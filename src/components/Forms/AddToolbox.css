@@ -1,5 +1,114 @@
-.ant-row.add-toolbox-wrapper {
-    justify-content: center;
-    align-items: center;
-    height: 89vh;
+/* .ant-row.add-toolbox-wrapper {
+  justify-content: center;
+  align-items: center;
+  height: 89vh;
+} */
+.add-toolbox-wrapper h1.toolbox-heading {
+  font-size: 50px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+.add-toolbox-wrapper {
+  background: #f2f2f2;
+  padding-bottom: 50px;
+}
+.add-toolbox-wrapper .ant-col.ant-col-20 {
+  margin: auto;
+}
+.add-toolbox-wrapper .toolbox-column {
+  margin: auto;
+}
+.add-toolbox-wrapper form .form-background-color {
+  background: #fff;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+.add-toolbox-wrapper form input {
+  max-width: 650px;
+  max-height: 45px;
+  background: #f6f6f6;
+  border: 1px solid #f2f2f2;
+  padding: 9px;
+  border-radius: 5px;
+}
+.add-toolbox-wrapper form label {
+  width: fit-content;
+  margin-top:30px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.add-toolbox-wrapper form .input-date {
+  width: fit-content;
+  display: inline-block;
+  margin-right: 25px;
+}
+.add-toolbox-wrapper form .input-date .ant-picker {
+  min-width: 200px;
+  background: #f6f6f6;
+  border-radius: 5px;
+  padding: 0;
+  padding: 0 5px;
+}
+.file-wrapper .ant-form-item-label label{
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+.add-toolbox-wrapper form .file-language-add-btn {
+  display: inline-block;
+  vertical-align: bottom;
+  margin-top: 20px;
+}
+.file-language-add-btn .ant-upload button {
+  min-width: 310px;
+  min-height: 44px;
+  background: #f6f6f6;
+  margin-right: 50px;
+}
+.file-language-add-btn.language {
+  display: flex;
+}
+.file-language-add-btn.language .ant-select-selector {
+  min-height: 44px;
+  align-items: center;
+}
+.ant-row.ant-form-item.file-language-add-btn.language {
+  display: inline-flex;
+  flex-direction: inherit;
+  align-items: center;
+  margin-right: 50px;
+}
+.file-language-add-btn.language .ant-form-item-label {
+  margin-right: 35px;
+}
+.file-language-add-btn.language .ant-form-item-control div {
+  max-width: 135px;
+  background: #f6f6f6;
+  border-radius: 5px;
+}
+.file-language-add-btn .ant-form-item-control {
+  margin-left: 0;
+}
+form .plus-btn{
+  min-height: 40px;
+  min-width: 40px;
+  padding: 0;
+}
+form .plus-btn span{
+  font-size: 30px;
+  line-height: 1;
+}
+.toolbox-save-btn {
+  float: right;
+  margin-right: 25px;
+}
+.toolbox-save-btn,
+.add-save-btn {
+  min-width: 155px;
+  min-height: 44px;
+}
+.add-toolbox-wrapper form button {
+  border-radius: 5px;
+  font-size: 16px;
 }
