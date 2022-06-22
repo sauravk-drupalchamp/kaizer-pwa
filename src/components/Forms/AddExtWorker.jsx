@@ -15,8 +15,9 @@ const AddExtWorker = () => {
   return (
     <Fragment>
       <Row className="add-external-worker-wrapper">
-      <h1>Add External Worker</h1>
-        <Col>
+      <Col span={20}><h1 className="worker-heading">Add External Worker</h1></Col>
+        <Col span={20} className="middle-color">
+        <p className="general-info">General Info</p>
           <Form
             name="addExternalWorker"
             initialValues={{
@@ -68,14 +69,15 @@ const AddExtWorker = () => {
               <Input placeholder="Days worked at site:" />
             </Form.Item>
             
-            <Button type="primary">+</Button>
+            
 
-            <Form.Item
+            <Form.Item className="button-wrapper"
               wrapperCol={{
                 offset: 8,
-                span: 16,
+                span: 24,
               }}
             >
+              <Button type="primary">+</Button>
               <Button type="primary" htmlType="submit">
                 Save
               </Button>
