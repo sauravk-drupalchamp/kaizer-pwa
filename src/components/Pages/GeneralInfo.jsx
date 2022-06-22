@@ -18,7 +18,7 @@ const GeneralInfo = (props) => {
       .catch((generalInfoError) => {
         console.log(generalInfoError, "generalInfoError");
       });
-  }, []);
+  }, [generalInfoUrl]);
 
   return !isLoaded ? (
     <h1>Loading .....</h1>
