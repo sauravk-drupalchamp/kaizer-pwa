@@ -5,4 +5,5 @@ export { default as AddToolbox } from '../components/Forms/AddToolbox';
 export { default as AddExtWorker } from '../components/Forms/AddExtWorker';
 export { default as ConstructionSites } from '../components/Pages/ConstructionSites';
 export { default as ConstructionSitesDetails } from '../components/Pages/ConstructionSitesDetails';
+export { default as WorkerDetailsPage } from '../components/Pages/WorkerDetailsPage';
 export { default as User } from '../components/Pages/User';

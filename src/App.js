@@ -4,7 +4,7 @@ import {
   Header,
   AddToolbox,
   ConstructionSites,
-  AddExtWorker, User, ConstructionSitesDetails
+  AddExtWorker, User, ConstructionSitesDetails, WorkerDetailsPage
 } from "./components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {message} from 'antd'
@@ -61,7 +61,13 @@ const App = () => {
               exact
               element={isLoggedIn && <ConstructionSitesDetails />}
             />
+            <Route
+              path="/worker-details/:id"
+              exact
+              element={isLoggedIn && <WorkerDetailsPage />}
+            />
           </Routes>
+          
         </Router>
       {/* </AuthContext.Provider> */}
     </Fragment>

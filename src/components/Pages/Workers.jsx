@@ -130,7 +130,7 @@ const Workers = (props) => {
             status={per < 50 ? "exception" : "active"}
             size="small" />
         ),
-        action_view: <EyeOutlined />,
+        action_view: <Link to={`/worker-details/${unique_Id}`}><EyeOutlined /></Link>,
       };
     });
 
