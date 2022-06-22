@@ -32,6 +32,7 @@ const App = () => {
     localStorage.removeItem('crsf_token');
     localStorage.removeItem('logout_token');
     setIsLoggedIn(false)
+    window.location.href = '/';
   }
   return (
     <Fragment>
@@ -40,31 +41,26 @@ const App = () => {
           <Header isLoggedIn ={isLoggedIn} onLogout={logoutHandler}/>
           <Routes>
             <Route path={'/'} exact element={isLoggedIn ? <ConstructionSites className="container"/> : <Homepage onLogin={loginHandler}/>} />
-            <Route path={"/add-toolbox/:id"} exact element={isLoggedIn && <AddToolbox />} />
-            {/* <Route
-              path="/construction-sites"
-              exact
-              element={isLoggedIn && <ConstructionSites />}
-            /> */}
+            <Route path={"/add-toolbox/:id"} exact element={isLoggedIn ? <AddToolbox /> : <Homepage />} />
             <Route
               path="/add-external-worker"
               exact
-              element={isLoggedIn && <AddExtWorker />}
+              element={isLoggedIn ? <AddExtWorker /> : <Homepage />}
             />
             <Route
               path="/user"
               exact
-              element={isLoggedIn && <User />}
+              element={isLoggedIn ? <User /> : <Homepage /> }
             />
             <Route
               path="/construction-sites-detail/:id"
               exact
-              element={isLoggedIn && <ConstructionSitesDetails />}
+              element={isLoggedIn ? <ConstructionSitesDetails /> : <Homepage />}
             />
             <Route
               path="/worker-details/:id"
               exact
-              element={isLoggedIn && <WorkerDetailsPage />}
+              element={isLoggedIn ? <WorkerDetailsPage /> : <Homepage />}
             />
           </Routes>
           
