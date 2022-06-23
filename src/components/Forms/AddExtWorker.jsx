@@ -25,8 +25,8 @@ const AddExtWorker = () => {
             "Access-Control-Allow-Origin": "*",
           },
           auth: {
-            username : `${localStorage.getItem("username")}`,
-            password: `${localStorage.getItem("password")}`
+            username : `${sessionStorage.getItem("username")}`,
+            password: `${sessionStorage.getItem("password")}`
           },
           data: {
             "type": "worker",

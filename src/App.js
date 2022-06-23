@@ -16,8 +16,8 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const storedUserLoggedCrsfToken = localStorage.getItem('crsf_token');
-    const storedUserLogoutToken = localStorage.getItem('logout_token')
+    const storedUserLoggedCrsfToken = sessionStorage.getItem('crsf_token');
+    const storedUserLogoutToken = sessionStorage.getItem('logout_token')
 
     if (storedUserLoggedCrsfToken && storedUserLogoutToken) {
       setIsLoggedIn(true);

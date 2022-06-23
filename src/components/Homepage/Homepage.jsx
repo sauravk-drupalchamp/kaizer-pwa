@@ -55,10 +55,14 @@ const Homepage = (props) => {
                 // );
                 if (roleResponse.data[0].roles_target_id === "Supervisor") {
                   props.onLogin();
-                  localStorage.setItem("crsf_token", crsf_token);
-                  localStorage.setItem("logout_token", logout_token);
-                  localStorage.setItem("username",userName);
-                  localStorage.setItem("password",passWord);
+                  // localStorage.setItem("crsf_token", crsf_token);
+                  // localStorage.setItem("logout_token", logout_token);
+                  // localStorage.setItem("username",userName);
+                  // localStorage.setItem("password",passWord);
+                  sessionStorage.setItem("crsf_token", crsf_token);
+                  sessionStorage.setItem("logout_token", logout_token);
+                  sessionStorage.setItem("username",userName);
+                  sessionStorage.setItem("password",passWord);
                 } else {
                   error();
                 }

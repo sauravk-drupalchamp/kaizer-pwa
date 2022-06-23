@@ -10,50 +10,6 @@ import "./Header.css";
 import logo from "../../assets/logo.png";
 
 const Header = (props) => {
-  // const url = `http://drupaldev.kaizerstaging.creathing.be/test/user/1`;
-
-  // useEffect(()=>{
-  //   axios.get(url,{
-  //     auth:{
-  //       username: 'sp1',
-  //       password: 'sp1##'
-  //     }
-  //   }).then((res)=>{
-  //     console.log(res)
-  //   }).catch((err)=>{
-  //     console.log(err)
-  //   })
-  // },[])
-
-  // const handleLogout = () => {
-  //   const logoutToken = window.localStorage.getItem("logout_token");
-  //   const crsfToken = window.localStorage.getItem("crsf_token");
-  //   // console.log(logoutToken);
-  //   // axios.post(`${Config.drupal_live_url}/user/logout?_format=json&token=${logoutToken}`).then((response)=>{
-  //   //   console.log(response)
-  //   // }).catch((err)=>{
-  //   //   console.log(err);
-  //   // })
-
-  //   axios
-  //     .get(`${Config.drupal_live_url}/session/token`)
-  //     .then((res) => {
-  //       console.log(res.data)
-  //       axios({
-  //         method: "post",
-  //         url: `${Config.drupal_live_url}/user/logout?_format=json&token=${logoutToken}&csrf_token=${crsfToken}`
-  //       })
-  //         .then((response) => {
-  //           console.log(response);
-  //         })
-  //         .catch((err) => {
-  //           console.log(err, "====ERROR");
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       console.log("GET ERROR",error)
-  //     });
-  // };
   return (
     <Fragment>
       <Row className="header-wrapper">
