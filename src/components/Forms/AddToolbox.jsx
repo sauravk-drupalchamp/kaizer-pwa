@@ -1,14 +1,20 @@
 import { React, Fragment } from "react";
 import { Col, Row } from "antd";
 import { Button, DatePicker, Form, Input, Upload, Select, message } from "antd";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import moment from "moment";
+import Config from "../../config";
+import axios from "axios";
 import { InfoCircleOutlined, UploadOutlined } from "@ant-design/icons";
 import "./AddToolbox.css";
 
 const AddToolbox = () => {
   const dateFormat = "YYYY/MM/DD";
-  const arr = ['Not Identified', 'English', 'French', 'German', 'Spanish'];
+  // const langArr = ['En', 'Fr', 'Se', 'Cn'];
+
   const constructionSite = useParams();
+  const nav = useNavigate();
+
   // FILE UPLOAD
   const propsUpload = {
     multiple: true,
@@ -39,6 +45,55 @@ const AddToolbox = () => {
   // FORM SUBMISSION
   const onFinish = (values) => {
     console.log('Success:', values)
+    
+    axios
+    .get(`${Config.drupal_live_url}/session/token`)
+    .then((tokenResponse) => {
+      axios({
+        method: "post",
+        url: `${Config.drupal_live_url}/node?_format=json`,
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": tokenResponse.data,
+          "Access-Control-Allow-Origin": "*",
+        },
+        auth: {
+          username : `${sessionStorage.getItem("username")}`,
+          password: `${sessionStorage.getItem("password")}`
+        },
+        data: {
+          "type": "toolbox",
+          "title": {
+            "value": `${values.administrationName}`,
+          },
+          "field_construction_site_ref": {
+            "value": `${constructionSite.id}`,
+          },
+          "field_date_from": {
+            "value": `${moment(values.dateFrom._d).format('YYYY-MM-DD')}`,
+          },
+          "field_date_untill": {
+            "value": `${moment(values.dateUntill._d).format('YYYY-MM-DD')}`,
+          },
+          "field_preferred_language_select": {
+            "value": `${values.language}`,
+          }
+        }
+      })
+        .then((postResponse) => {
+          // console.log(postResponse)
+          if(postResponse.status === 201){
+            message.success("Succesfully Added Worker")
+            nav(`/construction-sites-detail/${constructionSite.id}`)
+          } else{
+            message.error("Ooops Something Went Wrong !!")
+          }
+        })
+        .catch((postError) => {
+          console.log("postError",postError)
+        });
+    })
+    .catch((tokenError) => {});
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -122,9 +177,13 @@ const AddToolbox = () => {
                     .localeCompare(optionB.children.toLowerCase())
                 }
               >
-                {arr.map((item, i) => {
+                {/* {langArr.map((item, i) => {
                   return <Option value={i}>{item}</Option>
-                })}
+                })} */}
+                <Option value="En">English</Option>
+                <Option value="FR">French</Option>
+                <Option value="SE">Sweden</Option>
+                <Option value="Cn">Chinese</Option>
               </Select>
             </Form.Item>
             <Form.Item
