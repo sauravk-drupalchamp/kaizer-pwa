@@ -25,8 +25,8 @@ const AddExtWorker = () => {
             "Access-Control-Allow-Origin": "*",
           },
           auth: {
-            username : "sp1",
-            password: "sp1##"
+            username : `${localStorage.getItem("username")}`,
+            password: `${localStorage.getItem("password")}`
           },
           data: {
             "type": "worker",
@@ -48,10 +48,12 @@ const AddExtWorker = () => {
           }
         })
           .then((postResponse) => {
-            console.log(postResponse)
+            // console.log(postResponse)
             if(postResponse.status === 201){
               message.success("Succesfully Added Worker")
               nav(`/construction-sites-detail/${siteID.id}`)
+            } else{
+              message.error("Ooops Something Went Wrong !!")
             }
           })
           .catch((postError) => {

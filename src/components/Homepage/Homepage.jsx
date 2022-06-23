@@ -57,6 +57,8 @@ const Homepage = (props) => {
                   props.onLogin();
                   localStorage.setItem("crsf_token", crsf_token);
                   localStorage.setItem("logout_token", logout_token);
+                  localStorage.setItem("username",userName);
+                  localStorage.setItem("password",passWord);
                 } else {
                   error();
                 }
