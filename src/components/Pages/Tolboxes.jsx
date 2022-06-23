@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Button, Table } from 'antd'
-import { EyeOutlined } from "@ant-design/icons";
+import { EyeOutlined, DeleteTwoTone } from "@ant-design/icons";
 import { Link } from 'react-router-dom'
 import Config from "../../config";
 import axios from "axios";
@@ -42,7 +42,7 @@ const Tolboxes = (props) => {
         key: index,
         name: title,
         date_from: date_from,
-        action_view: <EyeOutlined />,
+        action_view: <div><EyeOutlined /><DeleteTwoTone /> </div>,
       };
     });
 
