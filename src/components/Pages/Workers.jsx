@@ -2,11 +2,12 @@ import { React, useState, useEffect } from "react";
 import Config from "../../config";
 import { Space, DatePicker, Select, Button, Form, Table, Progress } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const { Option } = Select;
 const Workers = (props) => {
+  const siteID = useParams();
   const [workerInfo, setWorkerInfo] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const workerInfoUrl = `${Config.drupal_live_url}/workers-listing-rest-api/${props.siteID}`;
@@ -49,7 +50,7 @@ const Workers = (props) => {
       <Space direction="vertical">
         <Space>
           <h4>Worker Info</h4>
-          <Link to="/add-external-worker">
+          <Link to={`/add-external-worker/${siteID.id}`}>
             <Button type="primary">Add Worker</Button>
           </Link>
         </Space>

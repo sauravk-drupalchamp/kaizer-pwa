@@ -43,7 +43,7 @@ const App = () => {
             <Route path={'/'} exact element={isLoggedIn ? <ConstructionSites className="container"/> : <Homepage onLogin={loginHandler}/>} />
             <Route path={"/add-toolbox/:id"} exact element={isLoggedIn ? <AddToolbox /> : <Homepage />} />
             <Route
-              path="/add-external-worker"
+              path="/add-external-worker/:id"
               exact
               element={isLoggedIn ? <AddExtWorker /> : <Homepage />}
             />
