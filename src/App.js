@@ -29,8 +29,8 @@ const App = () => {
     message.success("Successfully Logged In")
   }
   const logoutHandler = ()=>{
-    localStorage.removeItem('crsf_token');
-    localStorage.removeItem('logout_token');
+    sessionStorage.removeItem('crsf_token');
+    sessionStorage.removeItem('logout_token');
     setIsLoggedIn(false)
     window.location.href = '/';
   }
