@@ -18,8 +18,16 @@ const AddToolbox = () => {
   const nav = useNavigate();
 
   // FILE UPLOAD
+  const handleBeforeUpload = (file) => {
+    const isPDF = file.type === "application/pdf";
 
-  const uploadImage = async options =>{
+    if (!isPDF) {
+      message.error(`${file.name} is not a PDF file`);
+    }
+
+    return isPDF || Upload.LIST_IGNORE;
+  };
+  const uploadImage = async (options) => {
     const { onSuccess, onError, file } = options;
     // console.log(file,"File =======")
     // console.log(token)
@@ -35,17 +43,19 @@ const AddToolbox = () => {
         username: `${sessionStorage.getItem("username")}`,
         password: `${sessionStorage.getItem("password")}`,
       },
-      data: file.uid
-    }).then((fileUploadResponse)=>{
-      onSuccess("Ok");
-      // console.log("server res: ", fileUploadResponse);
-      // console.log(fileUploadResponse.data.fid[0].value,"fileUploadResponse.data.fid")
-      setFileID(fileUploadResponse.data.fid[0].value);
-    }).catch((fileUploadError)=>{
-      console.log("Eroor: ", fileUploadError);
-      onError({ fileUploadError });
+      data: file.uid,
     })
-  }
+      .then((fileUploadResponse) => {
+        onSuccess("Ok");
+        // console.log("server res: ", fileUploadResponse);
+        // console.log(fileUploadResponse.data.fid[0].value,"fileUploadResponse.data.fid")
+        setFileID(fileUploadResponse.data.fid[0].value);
+      })
+      .catch((fileUploadError) => {
+        console.log("Eroor: ", fileUploadError);
+        onError({ fileUploadError });
+      });
+  };
   // LANGUAGE
   const { Option } = Select;
 
@@ -56,52 +66,52 @@ const AddToolbox = () => {
     // axios
     // .get(`${Config.drupal_live_url}/session/token`)
     // .then((tokenResponse) => {
-      axios({
-        method: "post",
-        url: `${Config.drupal_live_url}/node?_format=json`,
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": token,
-          "Access-Control-Allow-Origin": "*",
+    axios({
+      method: "post",
+      url: `${Config.drupal_live_url}/node?_format=json`,
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": token,
+        "Access-Control-Allow-Origin": "*",
+      },
+      auth: {
+        username: `${sessionStorage.getItem("username")}`,
+        password: `${sessionStorage.getItem("password")}`,
+      },
+      data: {
+        type: "toolbox",
+        title: {
+          value: `${values.administrationName}`,
         },
-        auth: {
-          username : `${sessionStorage.getItem("username")}`,
-          password: `${sessionStorage.getItem("password")}`
+        field_construction_site_ref: {
+          value: `${constructionSite.id}`,
         },
-        data: {
-          "type": "toolbox",
-          "title": {
-            "value": `${values.administrationName}`,
-          },
-          "field_construction_site_ref": {
-            "value": `${constructionSite.id}`,
-          },
-          "field_date_from": {
-            "value": `${moment(values.dateFrom._d).format('YYYY-MM-DD')}`,
-          },
-          "field_date_untill": {
-            "value": `${moment(values.dateUntill._d).format('YYYY-MM-DD')}`,
-          },
-          "field_preferred_language_select": {
-            "value": `${values.language}`,
-          },
-          "field_upload_pdf": {
-            "value": fileID
-          }
+        field_date_from: {
+          value: `${moment(values.dateFrom._d).format("YYYY-MM-DD")}`,
+        },
+        field_date_untill: {
+          value: `${moment(values.dateUntill._d).format("YYYY-MM-DD")}`,
+        },
+        field_preferred_language_select: {
+          value: `${values.language}`,
+        },
+        field_upload_pdf: {
+          value: fileID,
+        },
+      },
+    })
+      .then((postResponse) => {
+        // console.log(postResponse)
+        if (postResponse.status === 201) {
+          message.success("Succesfully Added Worker");
+          nav(`/construction-sites-detail/${constructionSite.id}`);
+        } else {
+          message.error("Ooops Something Went Wrong !!");
         }
       })
-        .then((postResponse) => {
-          // console.log(postResponse)
-          if(postResponse.status === 201){
-            message.success("Succesfully Added Worker")
-            nav(`/construction-sites-detail/${constructionSite.id}`)
-          } else{
-            message.error("Ooops Something Went Wrong !!")
-          }
-        })
-        .catch((postError) => {
-          console.log("postError",postError)
-        });
+      .catch((postError) => {
+        console.log("postError", postError);
+      });
     // })
   };
 
@@ -180,10 +190,12 @@ const AddToolbox = () => {
                 {/* <Upload>
                 <Button icon={<UploadOutlined />}>Upload</Button>
               </Upload> */}
-                <Upload accept=".pdf"
-        customRequest={uploadImage}
-        // onChange={handleUploadChange}
-         >
+                <Upload
+                  accept=".pdf"
+                  beforeUpload={handleBeforeUpload}
+                  customRequest={uploadImage}
+                  // onChange={handleUploadChange}
+                >
                   <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 </Upload>
                 {/* <input type="file" onChange={handleUploadChnage} placeholder="Upload PDF" /> */}
