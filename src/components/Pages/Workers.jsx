@@ -64,8 +64,6 @@ const Workers = (props) => {
             }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
-            autoComplete="off"
-            formLayout="inline"
           >
             <Form.Item
               name="dateFrom"
