@@ -62,10 +62,6 @@ const AddToolbox = () => {
   // FORM SUBMISSION
   const onFinish = (values) => {
     console.log("Success:", values);
-
-    // axios
-    // .get(`${Config.drupal_live_url}/session/token`)
-    // .then((tokenResponse) => {
     axios({
       method: "post",
       url: `${Config.drupal_live_url}/node?_format=json`,
@@ -112,7 +108,6 @@ const AddToolbox = () => {
       .catch((postError) => {
         console.log("postError", postError);
       });
-    // })
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -186,19 +181,20 @@ const AddToolbox = () => {
                 label="Files:"
                 name="fileUpload"
                 className="file-language-add-btn file-wrapper"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Upload PDF",
+                  },
+                ]}
               >
-                {/* <Upload>
-                <Button icon={<UploadOutlined />}>Upload</Button>
-              </Upload> */}
                 <Upload
                   accept=".pdf"
                   beforeUpload={handleBeforeUpload}
                   customRequest={uploadImage}
-                  // onChange={handleUploadChange}
                 >
                   <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 </Upload>
-                {/* <input type="file" onChange={handleUploadChnage} placeholder="Upload PDF" /> */}
               </Form.Item>
               {/*------------------------------------- LANGUAGE -------------------------------------*/}
               <Form.Item
