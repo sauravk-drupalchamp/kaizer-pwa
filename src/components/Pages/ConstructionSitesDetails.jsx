@@ -11,11 +11,11 @@ const ConstructionSitesDetails = () => {
   return (
     <div className="construction-sites-details-wrapper">
       <Row>
-        <Col span={12}>
+        <Col span={8} offset={4}>
           <GeneralInfo siteID={siteID.id} />
           <Workers siteID={siteID.id} />
         </Col>
-        <Col span={12}>
+        <Col span={8}>
           <Tolboxes siteID={siteID.id} />
         </Col>
       </Row>

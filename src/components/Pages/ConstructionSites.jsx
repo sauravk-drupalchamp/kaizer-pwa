@@ -23,25 +23,23 @@ const ConstructionSites = () => {
       });
   }, []);
 
-  if (!isLoaded) {
-    <Spin size="large" />;
-  } else {
-    return (
-      <Fragment>
-        <Row>
-          <h1>Construction Sites</h1>
-          <Col span={16}>
-            <h5>Construction Sites</h5>
-            <Table
-              className="construction-sites"
-              dataSource={tableData}
-              columns={columns}
-            />
-          </Col>
-        </Row>
-      </Fragment>
-    );
-  }
+  return !isLoaded ? (
+    <Spin size="large" />
+  ) : (
+    <Fragment>
+      <Row>
+        <h1>Construction Sites</h1>
+        <Col span={16}>
+          <h5>Construction Sites</h5>
+          <Table
+            className="construction-sites"
+            dataSource={tableData}
+            columns={columns}
+          />
+        </Col>
+      </Row>
+    </Fragment>
+  );
 
   function getTableData() {
     const tableData = items.map((item, index) => {
