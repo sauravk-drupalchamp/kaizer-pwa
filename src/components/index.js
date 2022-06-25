@@ -7,3 +7,5 @@ export { default as ConstructionSites } from '../components/Pages/ConstructionSi
 export { default as ConstructionSitesDetails } from '../components/Pages/ConstructionSitesDetails';
 export { default as WorkerDetailsPage } from '../components/Pages/WorkerDetailsPage';
 export { default as User } from '../components/Pages/User';
+
+export { default as AddExtTest } from '../components/Forms/AddExtTest';

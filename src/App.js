@@ -7,7 +7,7 @@ import {
   AddExtWorker,
   User,
   ConstructionSitesDetails,
-  WorkerDetailsPage,
+  WorkerDetailsPage, AddExtTest
 } from "./components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { message } from "antd";
@@ -81,6 +81,11 @@ const App = () => {
             path="/worker-details/:id"
             exact
             element={isLoggedIn ? <WorkerDetailsPage /> : <Homepage />}
+          />
+          <Route
+            path="/add-ext-test"
+            exact
+            element={isLoggedIn ? <AddExtTest /> : <Homepage />}
           />
         </Routes>
       </Router>
