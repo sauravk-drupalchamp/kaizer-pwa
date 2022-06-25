@@ -1,9 +1,9 @@
 import { React } from "react";
 import { useParams } from "react-router-dom";
-import GeneralInfo from "./GeneralInfo";
+import GeneralInfo from "./ConstructionSite/GeneralInfo";
 import { Row, Col } from "antd";
-import Tolboxes from "./Tolboxes";
-import Workers from "./Workers";
+import Tolboxes from "./ConstructionSite/Tolboxes";
+import Workers from "./ConstructionSite/Workers";
 import './ConstructionSitesDetails.css'
 
 const ConstructionSitesDetails = () => {

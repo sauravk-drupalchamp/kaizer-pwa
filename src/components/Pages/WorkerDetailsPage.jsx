@@ -1,6 +1,6 @@
 import React from 'react'
-import WorkerInfo from './WorkerInfo'
-import WorkersToolbox from './WorkersToolbox'
+import WorkerInfo from './Worker/WorkerInfo'
+import WorkersToolbox from './Worker/WorkersToolbox'
 import { useParams } from 'react-router-dom'
 
 const WorkerDetailsPage = () => {

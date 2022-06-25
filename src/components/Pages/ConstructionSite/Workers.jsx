@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import Config from "../../config";
+import Config from "../../../config";
 import { Space, DatePicker, Select, Button, Form, Table, Progress } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { Link, useParams } from "react-router-dom";

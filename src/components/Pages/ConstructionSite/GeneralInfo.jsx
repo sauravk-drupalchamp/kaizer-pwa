@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import Config from "../../config";
+import Config from "../../../config";
 import axios from "axios";
 
 const GeneralInfo = (props) => {
