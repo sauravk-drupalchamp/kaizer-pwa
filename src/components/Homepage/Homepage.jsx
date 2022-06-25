@@ -49,12 +49,11 @@ const Homepage = (props) => {
             axios
               .get(`${Config.drupal_live_url}/rest/user/${user_id}`)
               .then((roleResponse) => {
-                // console.log(
-                //   "roleResponse",
-                //   roleResponse.data[0].roles_target_id
-                // );
+                // console.log("roleResponse",roleResponse.data[0].mail);
+
                 if (roleResponse.data[0].roles_target_id === "Supervisor") {
                   props.onLogin();
+                  // console.log(roleResponse.data[0].mail,"roleResponse.data[0].mail")
                   // localStorage.setItem("crsf_token", crsf_token);
                   // localStorage.setItem("logout_token", logout_token);
                   // localStorage.setItem("username",userName);
@@ -63,6 +62,7 @@ const Homepage = (props) => {
                   sessionStorage.setItem("logout_token", logout_token);
                   sessionStorage.setItem("username",userName);
                   sessionStorage.setItem("password",passWord);
+                  sessionStorage.setItem("email",roleResponse.data[0].mail)
                 } else {
                   error();
                 }
