@@ -1,6 +1,6 @@
 import { React, Fragment } from "react";
 import { Col, Row } from "antd";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input, message, DatePicker } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
 import Config from "../../config";
 import axios from "axios";
@@ -9,6 +9,7 @@ import "./AddExternalWorker.css";
 const AddExtWorker = () => {
   const siteID = useParams();
   const nav = useNavigate();
+  const dateFormat = "YYYY/MM/DD";
   // FORM SUBMISSION
   const onFinish = (values) => {
     const id = siteID.id;
@@ -44,7 +45,7 @@ const AddExtWorker = () => {
             },
             "field_field_unique": {
               "value": `${values.id}`,
-            }
+            },
           }
         })
           .then((postResponse) => {
@@ -115,7 +116,7 @@ const AddExtWorker = () => {
                 },
               ]}
             >
-              <Input placeholder="Days worked at site:" />
+              <DatePicker format={dateFormat} />
             </Form.Item>
 
             <Form.Item
