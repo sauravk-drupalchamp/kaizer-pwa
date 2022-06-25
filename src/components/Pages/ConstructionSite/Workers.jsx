@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Config from "../../../config";
-import { Space, DatePicker, Select, Button, Form, Table, Progress } from "antd";
+import { Space, DatePicker, Select, Button, Form, Table, Progress, Spin } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
@@ -44,7 +44,7 @@ const Workers = (props) => {
   }, [workerInfoUrl]);
 
   return !isLoaded ? (
-    <h1>Loading .....</h1>
+    <h1><Spin size="large" /></h1>
   ) : (
     <div className="worker-info-wrapper">
       <Space direction="vertical">

@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Button, Table } from 'antd'
+import { Button, Table, Spin } from 'antd'
 import { EyeOutlined, DeleteTwoTone } from "@ant-design/icons";
 import { Link } from 'react-router-dom'
 import Config from "../../../config";
@@ -24,7 +24,7 @@ const Tolboxes = (props) => {
       }, [toolboxesInfoUrl]);
 
     return !isLoaded ? (
-    <h1>Loading .....</h1>
+    <h1><Spin size="large" /></h1>
   ) : (
     <div className="toolboxes-info-wrapper">
     <h4>Toolboxes Info</h4>

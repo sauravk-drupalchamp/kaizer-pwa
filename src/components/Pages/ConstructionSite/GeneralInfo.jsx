@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Config from "../../../config";
+import { Spin } from "antd";
 import axios from "axios";
 
 const GeneralInfo = (props) => {
@@ -21,7 +22,7 @@ const GeneralInfo = (props) => {
   }, [generalInfoUrl]);
 
   return !isLoaded ? (
-    <h1>Loading .....</h1>
+    <h1><Spin size="large"/></h1>
   ) : (
     <div className="general-info-wrapper">
     <h4>General Info</h4>
