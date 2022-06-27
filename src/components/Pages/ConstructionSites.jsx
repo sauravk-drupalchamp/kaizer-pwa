@@ -29,10 +29,33 @@ const ConstructionSites = () => {
   ) : (
     <Fragment>
       <Row className="construction-sites-row">
-          <Col span={16} offset={4}>
+          <Col xs={{
+        span: 22,
+        offset: 1,
+      }}
+      lg={{
+        span: 16,
+        offset: 4,
+      }}
+      md={{
+        span: 16,
+        offset: 2,
+      }}
+      >
             <h1>Construction Sites</h1>
           </Col>
-        <Col span={16} offset={4} className="construction-sites-col">
+        <Col xs={{
+        span: 22,
+        offset: 1,
+      }}
+      lg={{
+        span: 16,
+        offset: 4,
+      }}
+      md={{
+        span: 16,
+        offset: 2,
+      }} className="construction-sites-col">
           <h5>Construction Sites</h5>
           <Table
             className="construction-sites-table"
