@@ -1,3 +1,354 @@
 form#workersFilter {
-    display: flex;
+  display: flex;
 }
+.construction-sites-details-wrapper {
+  background: #f2f2f2;
+  margin: auto;
+  padding: 10px 15px;
+}
+.construction-sites-details-wrapper h1 {
+  font-size: 50px;
+  /* line-height: 30px; */
+}
+/* General Info */
+.general-info-wrapper {
+  padding: 25px;
+  max-width: 720px;
+  margin: 0 auto 25px;
+  background: #fff;
+}
+.general-info-wrapper h4 {
+  color: #205214;
+  font-size: 20px;
+  line-height: 30px;
+}
+.general-info-paragraph p {
+  font-size: 15px;
+  line-height: 18px;
+  color: #6d6d6d;
+}
+.general-info-paragraph p span {
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 500;
+  color: black;
+  margin-right: 10px;
+}
+/* WORKERS INFO */
+.worker-info-wrapper {
+  padding: 25px;
+  background: #fff;
+  max-width: 720px;
+  margin: auto;
+}
+.worker-info-wrapper h4 {
+  color: #205214;
+  font-size: 20px;
+  /* margin: 0; */
+  line-height: 30px;
+}
+.worker-info-wrapper .ant-space.ant-space-vertical {
+  width: 100%;
+}
+.worker-info-wrapper .worker-information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.worker-info-wrapper form .ant-form-item .ant-picker,
+.worker-info-wrapper form .ant-form-item .ant-select-selector {
+  min-height: 44px;
+  max-width: 136.05px;
+  margin: 0 12px;
+  border-radius: 5px;
+  background: #f2f2f2;
+}
+.worker-info-wrapper form .ant-form-item .ant-select-selector {
+  width: 136.05px;
+  margin-right: 24px;
+}
+.worker-info-wrapper form .ant-select-selector .ant-select-selection-item {
+  display: flex;
+  align-items: center;
+}
+.worker-info-wrapper form .ant-select span.ant-select-arrow {
+  right: 30px;
+}
+.ant-row.ant-form-item {
+  margin: 0;
+}
+.ant-space.ant-space-horizontal.ant-space-align-center.worker-filter {
+  margin-top: 20px;
+}
+.worker-info-wrapper table thead th {
+  font-size: 16px;
+  line-height: 30px;
+  padding: 10px;
+}
+.worker-info-wrapper table tbody td{
+  padding: 14px;
+}
+.worker-info-wrapper .anticon-eye svg {
+  color: #357ffa;
+  width: 23.33px;
+  height: 18.15px;
+}
+.worker-filter p {
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 500;
+  margin: 0;
+}
+.worker-information button span,
+.worker-filter button span {
+  font-size: 15px;
+  line-height: 18px;
+}
+.worker-information button {
+  width: 150px;
+  height: 44px;
+  border-radius: 5px;
+}
+.worker-filter button {
+  width: 90px;
+  height: 44px;
+  border-radius: 5px;
+}
+.worker-info-wrapper .ant-progress-inner .ant-progress-bg {
+  border-radius: inherit;
+  padding: 5px;
+}
+.worker-info-wrapper .ant-progress-inner {
+  border-radius: initial;
+  box-shadow: 0 0 0 0.2pt;
+}
+/* TOOLBOXES INFO */
+.toolboxes-info-wrapper {
+  padding: 25px;
+  max-width: 550px;
+  margin: auto;
+  background: #fff;
+}
+.toolboxes-info-wrapper h4 {
+  color: #205214;
+  font-size: 20px;
+  line-height: 30px;
+}
+.toolboxes-info-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toolboxes-info-heading button span {
+  font-size: 30px;
+  line-height: 39px;
+}
+.toolboxes-info-heading button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+.toolboxes-info-wrapper table tbody td {
+  font-size: 15px;
+  line-height: 30px;
+  padding: 10px;
+}
+.toolboxes-info-wrapper table thead th {
+  font-size: 16px;
+  line-height: 30px;
+  padding: 10px;
+}
+.toolboxes-info-wrapper .anticon-eye svg {
+  color: #357ffa;
+  width: 23.33px;
+  height: 18.15px;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Construction Sites  */
+
+.construction-sites-row {
+  background: #f2f2f2;
+  padding-bottom: 50px;
+}
+.construction-sites-row .ant-col-20 {
+  margin: auto;
+}
+.construction-sites-row h1 {
+  font-size: 50px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.construction-sites-col {
+  background: #fff;
+  padding: 25px;
+}
+.construction-sites-col h5 {
+  color: #205214;
+  font-size: 20px;
+  line-height: 30px;
+}
+.construction-sites-table table thead th {
+  font-size: 16px;
+  line-height: 30px;
+  padding: 10px;
+}
+.construction-sites-table table tbody td {
+  font-size: 15px;
+  line-height: 30px;
+  padding: 10px;
+}
+.construction-sites-table .ant-progress-inner .ant-progress-bg {
+  border-radius: inherit;
+  padding: 5px;
+}
+.construction-sites-table .ant-progress-inner {
+  border-radius: initial;
+  box-shadow: 0 0 0 0.2pt;
+}
+.construction-sites-table .anticon-eye svg {
+  color: #357ffa;
+  width: 23.33px;
+  height: 18.15px;
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 768px) {
+  /* General info  */
+  .construction-sites-details-wrapper h1 {
+    font-size: 42px;
+    text-align: center;
+  }
+  .construction-sites-details-wrapper .ant-row {
+    flex-direction: column;
+  }
+  .construction-sites-details-wrapper .general-info-ipad {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  /* Toolbox info  */
+  .toolboxes-info-wrapper {
+    margin-top: 25px;
+  }
+  .ant-col-20 .construction-sites-row h1 {
+    font-size: 40px;
+    margin-top: 11px;
+    margin-bottom: 15px;}
+}
+
+@media only screen and (max-width: 767px) {
+  .general-info-wrapper, .worker-info-wrapper,.toolboxes-info-wrapper{
+    padding:15px;
+  }
+  .construction-sites-details-wrapper h1 {
+    font-size: 34px;
+    text-align: center;
+  }
+  .construction-sites-details-wrapper .ant-row {
+    flex-direction: column;
+  }
+  .construction-sites-details-wrapper .general-info-ipad {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  /* Worker info  */
+  .worker-info-wrapper form .ant-form-item .ant-select-selector {
+    width: auto;
+    margin-right: 15px;
+  }
+  /* Toolbox info  */
+  .toolboxes-info-wrapper {
+    margin-top: 20px;
+  }
+  /* Construction Sites  */
+  .construction-sites-row h1 {
+    font-size: 40px;
+    margin-top: 11px;
+    margin-bottom: 15px;
+  }
+  .construction-sites-col {
+    padding: 15px;
+  }
+  .construction-sites-table table thead th {
+    font-size: 15px;
+    line-height: 22px;
+    padding: 10px 9px;
+  }
+  .construction-sites-table table tbody td {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 10px 9px;
+  }
+}
+
+@media only screen and (max-width: 492px) {
+  form#workersFilter {
+    display: table;
+  }
+  .general-info-wrapper, .worker-info-wrapper,.toolboxes-info-wrapper{
+    padding:8px;
+  }
+  .construction-sites-details-wrapper .general-info-ipad {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .worker-information button {
+    width: 120px;
+    height: 40px;
+  }
+  .ant-space.ant-space-horizontal.ant-space-align-center.worker-filter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .worker-info-wrapper form .ant-form-item .ant-picker,
+  .worker-info-wrapper form .ant-form-item .ant-select-selector {
+    margin: 5px 0;
+  }
+  .worker-filter button {
+    width: 136.05px;
+  }
+  .construction-sites-details-wrapper .general-info-ipad {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .worker-info-wrapper .worker-table th {
+    font-size: 14px;
+    padding: 0;
+    line-height: 20px;
+    padding: 4px;
+  }
+  .worker-info-wrapper .worker-table td {
+    font-size: 13px;
+    padding: 7px 5px;
+  }
+  .worker-info-wrapper .ant-progress-inner .ant-progress-bg {
+    padding: 4px;
+  }
+  /* Construction Sites  */
+  .construction-sites-row h1 {
+    font-size: 35px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+  }
+  .construction-sites-col h5{
+    font-size: 19px;
+    line-height: 25px;
+  }
+  .construction-sites-col {
+    padding: 7px;
+  }
+  .construction-sites-table table thead th {
+    font-size: 13px;
+    line-height: 20px;
+    padding: 10px 4px;
+  }
+  .construction-sites-table table tbody td {
+    font-size: 12px;
+    line-height: 20px;
+    padding: 10px 4px;
+    max-width: 75px;
+  }
+}
+
