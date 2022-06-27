@@ -29,8 +29,8 @@ const ConstructionSites = () => {
   ) : (
     <Fragment>
       <Row className="construction-sites-row">
+        <Col span={16} offset={4} className="construction-sites-col">
         <h1>Construction Sites</h1>
-        <Col span={16} className="construction-sites-col">
           <h5>Construction Sites</h5>
           <Table
             className="construction-sites-table"
