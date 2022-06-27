@@ -13,13 +13,39 @@ const Header = (props) => {
   return (
     <Fragment>
       <Row className="header-wrapper">
-        <Col span={4}>
+        <Col
+          xs={{
+            span: 22,
+            offset: 1,
+          }}
+          lg={{ 
+            span: 4,
+            offset: 24,
+          }}
+          xl={{
+            span: 2,
+            offset: 4,
+          }}
+        >
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
         </Col>
         {props.isLoggedIn && (
-          <Col span={16}>
+          <Col
+            xs={{
+              span: 22,
+              offset: 1,
+            }}
+            lg={{
+              span: 24,
+              offset: 0
+            }}
+            xl={{
+              span: 10,
+              offset: 0
+            }}
+          >
             <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
               <Menu.Item key="constructionSites">
                 <Link to="/">Construction Sites</Link>
@@ -31,18 +57,31 @@ const Header = (props) => {
           </Col>
         )}
         {props.isLoggedIn && (
-          <Col span={4}>
+          <Col
+            xs={{
+              span: 22,
+              offset: 1,
+            }}
+            lg={{
+              span: 2,
+              offset: 2 
+            }}
+            xl={{
+              span: 2,
+              offset: 2 
+            }}
+          >
             <Menu mode="horizontal">
-              <Menu.SubMenu key="Setting" title="Menu" icon={<SettingOutlined  />}>
+              <Menu.SubMenu
+                key="Setting"
+                title="Menu"
+                icon={<SettingOutlined />}
+              >
                 <Menu.Item key="user">
                   <Link to="/user">
-                    <Button
-                    type="secondary"
-                    icon={<UserOutlined />}
-                    block
-                  >
-                    User
-                  </Button>
+                    <Button type="secondary" icon={<UserOutlined />} block>
+                      User
+                    </Button>
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="logout">
