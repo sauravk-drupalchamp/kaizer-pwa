@@ -2,7 +2,7 @@ import { Fragment, React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Table, Spin, Row, Col, Progress } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
-import './ConstructionSitesDetails.css'
+import "./ConstructionSitesDetails.css";
 import Config from "../../config";
 import axios from "axios";
 
@@ -29,8 +29,10 @@ const ConstructionSites = () => {
   ) : (
     <Fragment>
       <Row className="construction-sites-row">
+          <Col span={16} offset={4}>
+            <h1>Construction Sites</h1>
+          </Col>
         <Col span={16} offset={4} className="construction-sites-col">
-        <h1>Construction Sites</h1>
           <h5>Construction Sites</h5>
           <Table
             className="construction-sites-table"
