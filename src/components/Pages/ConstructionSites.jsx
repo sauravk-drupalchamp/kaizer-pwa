@@ -38,7 +38,7 @@ const ConstructionSites = () => {
         offset: 4,
       }}
       md={{
-        span: 16,
+        span: 20,
         offset: 2,
       }}
       >
@@ -53,7 +53,7 @@ const ConstructionSites = () => {
         offset: 4,
       }}
       md={{
-        span: 16,
+        span: 20,
         offset: 2,
       }} className="construction-sites-col">
           <h5>Construction Sites</h5>
