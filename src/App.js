@@ -37,6 +37,7 @@ const App = () => {
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("password");
     sessionStorage.removeItem("email");
+    sessionStorage.removeItem("user_id");
     setIsLoggedIn(false);
     window.location.href = "/";
   };

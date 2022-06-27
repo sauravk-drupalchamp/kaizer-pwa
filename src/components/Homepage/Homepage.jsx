@@ -60,9 +60,10 @@ const Homepage = (props) => {
                   // localStorage.setItem("password",passWord);
                   sessionStorage.setItem("crsf_token", crsf_token);
                   sessionStorage.setItem("logout_token", logout_token);
-                  sessionStorage.setItem("username",userName);
-                  sessionStorage.setItem("password",passWord);
-                  sessionStorage.setItem("email",roleResponse.data[0].mail)
+                  sessionStorage.setItem("username", userName);
+                  sessionStorage.setItem("password", passWord);
+                  sessionStorage.setItem("email", roleResponse.data[0].mail);
+                  sessionStorage.setItem("user_id", user_id);
                 } else {
                   error();
                 }
@@ -139,7 +140,7 @@ const Homepage = (props) => {
               span: 16,
             }}
           >
-          <small>Forgot Password?</small>
+            <small>Forgot Password?</small>
           </Form.Item>
 
           <Form.Item

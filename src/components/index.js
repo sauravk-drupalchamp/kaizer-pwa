@@ -3,6 +3,7 @@ export { default as Header } from '../components/Layout/Header';
 export { default as Footer } from '../components/Layout/Footer';
 export { default as AddToolbox } from '../components/Forms/AddToolbox';
 export { default as AddExtWorker } from '../components/Forms/AddExtWorker';
+export { default as UserForm } from '../components/Forms/UserForm';
 export { default as ConstructionSites } from '../components/Pages/ConstructionSites';
 export { default as ConstructionSitesDetails } from '../components/Pages/ConstructionSitesDetails';
 export { default as WorkerDetailsPage } from '../components/Pages/WorkerDetailsPage';
