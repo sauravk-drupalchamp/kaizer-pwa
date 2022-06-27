@@ -27,8 +27,9 @@ const Tolboxes = (props) => {
     <h1><Spin size="large" /></h1>
   ) : (
     <div className="toolboxes-info-wrapper">
+    <div className="toolboxes-info-heading">
     <h4>Toolboxes Info</h4>
-    <Link to={`/add-toolbox/${props.siteID}`}><Button type="primary">+</Button></Link><hr />
+    <Link to={`/add-toolbox/${props.siteID}`}><Button type="primary">+</Button></Link></div><hr />
       <Table dataSource={tableData} columns={columns} />
     </div>
   );

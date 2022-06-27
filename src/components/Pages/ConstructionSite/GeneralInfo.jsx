@@ -29,11 +29,11 @@ const GeneralInfo = (props) => {
     <hr />
       {generalInfo.map((data,index) => {
         return (
-          <div key={index}>
-            <p>{data.title}</p>
-            <p>{data.field_address}</p>
-            <p>{data.field_date_from}</p>
-            <p>{data.field_date_untill}</p>
+          <div key={index} className="general-info-paragraph">
+            <p><span>ID: </span>{data.title}</p>
+            <p><span>Address: </span>{data.field_address}</p>
+            <p><span>Date from: </span>{data.field_date_from}</p>
+            <p><span>Date untill: </span>{data.field_date_untill}</p>
           </div>
         );
       })}

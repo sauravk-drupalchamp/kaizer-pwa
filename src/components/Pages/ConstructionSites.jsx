@@ -2,6 +2,7 @@ import { Fragment, React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Table, Spin, Row, Col, Progress } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
+import './ConstructionSitesDetails.css'
 import Config from "../../config";
 import axios from "axios";
 
@@ -27,12 +28,12 @@ const ConstructionSites = () => {
     <Spin size="large" />
   ) : (
     <Fragment>
-      <Row>
+      <Row className="construction-sites-row">
         <h1>Construction Sites</h1>
-        <Col span={16}>
+        <Col span={16} className="construction-sites-col">
           <h5>Construction Sites</h5>
           <Table
-            className="construction-sites"
+            className="construction-sites-table"
             dataSource={tableData}
             columns={columns}
           />

@@ -48,14 +48,14 @@ const Workers = (props) => {
   ) : (
     <div className="worker-info-wrapper">
       <Space direction="vertical">
-        <Space>
+        <Space className="worker-information">
           <h4>Worker Info</h4>
           <Link to={`/add-external-worker/${siteID.id}`}>
             <Button type="primary">Add Worker</Button>
           </Link>
         </Space>
 
-        <Space>
+        <Space className="worker-filter">
           <p>Filter:</p>
           <Form
             name="workersFilter"
@@ -109,7 +109,7 @@ const Workers = (props) => {
         </Space>
       </Space>
       <hr />
-      <Table dataSource={tableData} columns={columns} />
+      <Table dataSource={tableData} columns={columns} className="worker-table" />
     </div>
   );
 
