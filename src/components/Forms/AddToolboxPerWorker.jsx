@@ -132,7 +132,7 @@ const AddToolbox = () => {
       <Row className="add-toolbox-wrapper">
         <Col span={20}>
           <h1 className="toolbox-heading">
-            Add Toolbox For {workerID.id}
+            Add Toolbox Per Worker For {workerID.id}
           </h1>
         </Col>
         <Col span={20} className="toolbox-column">
