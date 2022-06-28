@@ -146,7 +146,7 @@ const UserForm = (props) => {
             },
           ]}
         >
-          <Input.Password onChange={handlePasswordChange} />
+          <Input.Password allowClear onChange={handlePasswordChange} />
         </Form.Item>
 
         <Form.Item
@@ -171,7 +171,7 @@ const UserForm = (props) => {
             }),
           ]}
         >
-          <Input.Password />
+          <Input.Password allowClear />
         </Form.Item>
 
         <Form.Item label="Language" formItemLayout="inline">
