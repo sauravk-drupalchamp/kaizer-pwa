@@ -80,7 +80,7 @@ const ConstructionSites = () => {
         tool_sign: (
           <Progress
             percent={per}
-            status={per < 50 ? "exception" : null}
+            status={per <=  50 ? "exception" : null}
             size="small"
           />
         ),

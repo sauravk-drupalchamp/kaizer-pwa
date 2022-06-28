@@ -2,11 +2,11 @@ import React from "react";
 import { Row, Col } from "antd";
 import UserForm from "../Forms/UserForm";
 
-const User = () => {
+const User = (props) => {
   return (
     <Row>
       <Col span={8} offset={4}>
-        <UserForm />
+        <UserForm onLogout={props.onLogout}/>
       </Col>
     </Row>
   );

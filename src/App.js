@@ -71,7 +71,7 @@ const App = () => {
           <Route
             path="/user"
             exact
-            element={isLoggedIn ? <User /> : <Homepage />}
+            element={isLoggedIn ? <User onLogout={logoutHandler}/> : <Homepage />}
           />
           <Route
             path="/construction-sites-detail/:id"

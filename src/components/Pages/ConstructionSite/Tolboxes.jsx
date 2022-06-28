@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Button, Table, Spin, message } from "antd";
 import { EyeOutlined, DeleteTwoTone } from "@ant-design/icons";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Config from "../../../config";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ const Tolboxes = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const toolboxesInfoUrl = `${Config.drupal_live_url}/toolboxes-listing-rest-api/${props.siteID}`;
   const { tableData, columns } = getTableData();
-  const nav = useNavigate();
+  // const nav = useNavigate();
   const siteID = useParams();
   useEffect(() => {
     axios
