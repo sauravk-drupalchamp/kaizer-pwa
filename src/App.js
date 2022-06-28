@@ -7,7 +7,7 @@ import {
   AddExtWorker,
   User,
   ConstructionSitesDetails,
-  WorkerDetailsPage,
+  WorkerDetailsPage, AddToolboxPerWorker
 } from "./components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { message } from "antd";
@@ -62,6 +62,11 @@ const App = () => {
             path={"/add-toolbox/:id"}
             exact
             element={isLoggedIn ? <AddToolbox /> : <Homepage />}
+          />
+          <Route
+            path={"/add-toolbox-per-worker/:id"}
+            exact
+            element={isLoggedIn ? <AddToolboxPerWorker /> : <Homepage />}
           />
           <Route
             path="/add-external-worker/:id"

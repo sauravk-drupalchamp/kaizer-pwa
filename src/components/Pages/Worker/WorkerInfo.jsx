@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Row, Col } from "antd";
+import { Row, Col, Spin } from "antd";
 import axios from "axios";
 import config from "../../../config";
 
@@ -23,7 +23,7 @@ const WorkerInfo = () => {
       });
   }, [url]);
   return !isLoading ? (
-    <h1>Loadinggggg.....</h1>
+    <Spin size="large"/>
   ) : (
     <Row>
       <Col>
