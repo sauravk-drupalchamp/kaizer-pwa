@@ -182,7 +182,7 @@ const UserForm = (props) => {
             <Option value="Cn">Chinese</Option>
           </Select>
         </Form.Item>
-        <Form.Item style={{ "margin-top": "20px" }}>
+        <Form.Item style={{ "marginTop": "20px" }}>
           <Button type="primary" htmlType="submit" block>
             Save
           </Button>

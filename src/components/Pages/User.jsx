@@ -3,6 +3,8 @@ import { Row, Col } from "antd";
 import UserForm from "../Forms/UserForm";
 
 const User = (props) => {
+
+  
   return (
     <Row>
       <Col span={8} offset={4}>
@@ -13,6 +15,28 @@ const User = (props) => {
 };
 
 export default User;
+
+// const handleChange = async (e)=>{
+  //   console.log(e.target.files[0])
+  //   const file = e.target.files[0];
+  //   const base64 = await convertbase64(file)
+  //   console.log("base64",base64)
+  // }
+
+  // const convertbase64 = (file)=>{
+  //   return new Promise((resolve, reject)=>{
+  //     const fileReader = new FileReader();
+  //     fileReader.readAsDataURL(file)
+
+  //     fileReader.onload = ()=>{
+  //       resolve(fileReader.result)
+  //     }
+
+  //     fileReader.onerror = (error)=>{
+  //       reject(error)
+  //     }
+  //   })
+  // }
 
 //     const [formValues, setFormValues] = useState([{ name: "", email : ""}])
 
