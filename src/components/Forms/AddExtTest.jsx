@@ -64,9 +64,12 @@ const AddExtTest = () => {
       .then((fileUploadResponse) => {
         onSuccess("Ok");
         // console.log("server res: ", fileUploadResponse);
-        console.log(fileUploadResponse.data.fid[0].value,"fileUploadResponse.data.fid")
+        // console.log(
+        //   fileUploadResponse.data.fid[0].value,
+        //   "fileUploadResponse.data.fid"
+        // );
         //setFileID(fileUploadResponse.data.fid[0].value);
-        setFileID( arr => [...arr, `${fileUploadResponse.data.fid[0].value}`]);
+        setFileID((arr) => [...arr, `${fileUploadResponse.data.fid[0].value}`]);
         // console.log(fileID,"fileID")
       })
       .catch((fileUploadError) => {
@@ -79,81 +82,82 @@ const AddExtTest = () => {
   const onFinish = (values) => {
     // console.log("values",values)
     const l = values.toolboxData.length;
-    console.log(l,"Length")
-    for (var i = 0; i < l; i++) {
-      console.log(values.toolboxData[i],i)
-      console.log(`Name=${i}`, values.toolboxData[i].administrationName)
-      console.log(`Date From=${i}`, values.toolboxData[i].dateFrom._d)
-      console.log(`Date Untill=${i}`, values.toolboxData[i].dateUntill._d)
-      console.log(`File=${i}`, values.toolboxData[i].fileUpload)
-      console.log(`Language=${i}`, values.toolboxData[i].language)
-      console.log(`fileID=${i}`,fileID[i])
-      axios({
-        method: "post",
-        url: `${Config.drupal_live_url}/node?_format=json`,
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRF-Token": token,
-          "Access-Control-Allow-Origin": "*",
-        },
-        auth: {
-          username: `${sessionStorage.getItem("username")}`,
-          password: `${sessionStorage.getItem("password")}`,
-        },
-        data: {
-          type: "toolbox",
-          title: {
-            value: `${values.toolboxData[i].administrationName}`,
-          },
-          field_construction_site_ref: {
-            value: `${constructionSite.id}`,
-          },
-          field_date_from: {
-            value: `${moment(values.toolboxData[i].dateFrom._d).format(
-              "YYYY-MM-DD"
-            )}`,
-          },
-          field_date_untill: {
-            value: `${moment(values.toolboxData[i].dateUntill._d).format(
-              "YYYY-MM-DD"
-            )}`,
-          },
-          field_preferred_language_select: {
-            value: `${values.toolboxData[i].language}`,
-          },
-          field_upload_pdf: {
-            value: fileID[i],
-          },
-        },
-      })
-        .then((postResponse) => {
-          // console.log(postResponse)
-          if (postResponse.status === 201) {
-            message.success("Succesfully Added Worker");
-            // if(i === l){
-            //   nav(`/construction-sites-detail/${constructionSite.id}`);
-            // }
-          } else {
-            message.error("Ooops Something Went Wrong !!");
-          }
+    // console.log(l, "Length");
+    for (let i = 0; i < l; i++) {
+      // console.log(values.toolboxData[i], i);
+      // console.log(`Name=${i}`, values.toolboxData[i].administrationName);
+      // console.log(`Date From=${i}`, values.toolboxData[i].dateFrom._d);
+      // console.log(`Date Untill=${i}`, values.toolboxData[i].dateUntill._d);
+      // console.log(`File=${i}`, values.toolboxData[i].fileUpload);
+      // console.log(`Language=${i}`, values.toolboxData[i].language);
+      // console.log(`fileID=${i}`, fileID[i]);
+      axios
+        .get(`${Config.drupal_live_url}/session/token`)
+        .then((tokenResponse) => {
+          axios({
+            method: "post",
+            url: `${Config.drupal_live_url}/node?_format=json`,
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRF-Token": tokenResponse.data,
+              "Access-Control-Allow-Origin": "*",
+            },
+            auth: {
+              username: `${sessionStorage.getItem("username")}`,
+              password: `${sessionStorage.getItem("password")}`,
+            },
+            data: {
+              type: "toolbox",
+              title: {
+                value: `${values.toolboxData[i].administrationName}`,
+              },
+              field_construction_site_ref: {
+                value: `${constructionSite.id}`,
+              },
+              field_date_from: {
+                value: `${moment(values.toolboxData[i].dateFrom._d).format(
+                  "YYYY-MM-DD"
+                )}`,
+              },
+              field_date_untill: {
+                value: `${moment(values.toolboxData[i].dateUntill._d).format(
+                  "YYYY-MM-DD"
+                )}`,
+              },
+              field_preferred_language_select: {
+                value: `${values.toolboxData[i].language}`,
+              },
+              field_upload_pdf: {
+                value: fileID[i],
+              },
+            },
+          })
+            // eslint-disable-next-line no-loop-func
+            .then((postResponse) => {
+              // console.log(postResponse)
+              if (postResponse.status === 201) {
+                message.success("Succesfully Added Worker");
+                if (i === l - 1) {
+                  nav(`/construction-sites-detail/${constructionSite.id}`);
+                }
+              } else {
+                message.error("Ooops Something Went Wrong !!");
+              }
+            })
+            .catch((postError) => {
+              console.log("postError", postError);
+            });
         })
-        .catch((postError) => {
-          console.log("postError", postError);
+        .catch((tokenError) => {
+          console.log("tokenError", tokenError);
         });
     }
   };
 
   useEffect(() => {
     buttonRef.current.click();
-    axios
-      .get(`${Config.drupal_live_url}/session/token`)
-      .then((tokenResponse) => {
-        setToken(tokenResponse.data);
-      })
-      .catch((tokenError) => {
-        console.log("tokenError", tokenError);
-      });
   }, []);
+
   return (
     <Form
       name="addToolbox"
