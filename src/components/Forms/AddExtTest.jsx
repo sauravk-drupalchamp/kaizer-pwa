@@ -1,11 +1,15 @@
+import { React, useEffect, useRef } from 'react'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
 
 const AddExtTest = () => {
+  const buttonRef = useRef(null);
   const onFinish = (values) => {
     console.log('Received values of form:', values);
   };
-
+  useEffect(()=>{
+    buttonRef.current.click();
+  },[])
   return (
     <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="off">
       <Form.List name="users">
@@ -32,6 +36,7 @@ const AddExtTest = () => {
                 >
                   <Input placeholder="First Name" />
                 </Form.Item>
+
                 <Form.Item
                   {...restField}
                   name={[name, 'last']}
@@ -44,11 +49,12 @@ const AddExtTest = () => {
                 >
                   <Input placeholder="Last Name" />
                 </Form.Item>
+
                 <MinusCircleOutlined onClick={() => remove(name)} />
               </Space>
             ))}
             <Form.Item>
-              <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+              <Button ref={buttonRef} type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
                 Add field
               </Button>
             </Form.Item>
