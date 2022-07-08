@@ -203,20 +203,10 @@ const AddToolbox = () => {
                 className="file-language-add-btn language"
               >
                 <Select
-                  showSearch
                   style={{
                     width: 200,
                   }}
                   placeholder="N/L"
-                  optionFilterProp="children"
-                  filterOption={(input, option) =>
-                    option.children.includes(input)
-                  }
-                  filterSort={(optionA, optionB) =>
-                    optionA.children
-                      .toLowerCase()
-                      .localeCompare(optionB.children.toLowerCase())
-                  }
                 >
                   {/* {langArr.map((item, i) => {
                   return <Option value={i}>{item}</Option>
