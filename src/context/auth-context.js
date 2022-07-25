@@ -1,16 +1,16 @@
 import { createContext, useContext, useState } from "react";
 import { message } from "antd";
+import { Navigate } from "react-router-dom";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const login = (isLoggedIn) => {
     console.log("Auth Context Login Function")
     setIsLoggedIn(isLoggedIn);
-    window.location.href = "/";
     message.success("Successfully Logged In");
+    <Navigate to={'/'} />
   };
 
   const logout = () => {
