@@ -5,13 +5,30 @@
     <link rel="icon" href="%PUBLIC_URL%/kaizerFavicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta
+      name="description"
+      content="Kazier PWA for Construction Sites"
+    />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PWAGram">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo36.png" sizes="36x36">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo48.png" sizes="48x48">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo72.png" sizes="72x72">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo96.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo144.png" sizes="144x144">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo512.png" sizes="512x512">
+
+    <meta name="msapplication-TileImage" content="/%PUBLIC_URL%/logo144.png">
+    <meta name="msapplication-TileColor" content="#fff">
+    <meta name="theme-color" content="#3f51b5">
+    
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -36,5 +53,18 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- <script>
+      if ("serviceWorker" in navigator) {
+        console.log("[SERVICE WORKER] Found!")
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then(function () {
+            console.log("Service worker registered!");
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      }
+    </script> -->
   </body>
 </html>
