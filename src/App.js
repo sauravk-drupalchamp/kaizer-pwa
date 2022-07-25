@@ -2,50 +2,31 @@ import { React, Fragment, useState, useEffect } from "react";
 import {
   Homepage,
   Header,
+  NoMatch,
   AddToolbox,
   ConstructionSites,
   AddExtWorker,
   User,
   ConstructionSitesDetails,
-  WorkerDetailsPage, AddToolboxPerWorker
+  WorkerDetailsPage,
+  AddToolboxPerWorker,
 } from "./components";
+import { useAuth } from "./context/auth-context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { message } from "antd";
-// import AuthContext from "./context/auth-context";
 import "./App.css";
 
 const App = () => {
-  // const ctx = useContext(AuthContext);
+  const auth = useAuth();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const storedUserLoggedCrsfToken = sessionStorage.getItem("crsf_token");
-    const storedUserLogoutToken = sessionStorage.getItem("logout_token");
+    setIsLoggedIn(auth.isLoggedIn);
+  }, [auth.isLoggedIn]);
 
-    if (storedUserLoggedCrsfToken && storedUserLogoutToken) {
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  const loginHandler = () => {
-    window.location.href = "/";
-    message.success("Successfully Logged In");
-  };
-  const logoutHandler = () => {
-    sessionStorage.removeItem("crsf_token");
-    sessionStorage.removeItem("logout_token");
-    sessionStorage.removeItem("username");
-    sessionStorage.removeItem("password");
-    sessionStorage.removeItem("email");
-    sessionStorage.removeItem("user_id");
-    setIsLoggedIn(false);
-    window.location.href = "/";
-  };
   return (
     <Fragment>
-      {/* <AuthContext.Provider value={{isLoggedIn:ctx.isLoggedIn}}> */}
       <Router>
-        <Header isLoggedIn={isLoggedIn} onLogout={logoutHandler} />
+        <Header isLoggedIn={isLoggedIn} />
         <Routes>
           <Route
             path={"/"}
@@ -54,7 +35,7 @@ const App = () => {
               isLoggedIn ? (
                 <ConstructionSites className="container" />
               ) : (
-                <Homepage onLogin={loginHandler} />
+                <Homepage />
               )
             }
           />
@@ -76,7 +57,9 @@ const App = () => {
           <Route
             path="/user"
             exact
-            element={isLoggedIn ? <User onLogout={logoutHandler}/> : <Homepage />}
+            element={
+              isLoggedIn ? <User /> : <Homepage />
+            }
           />
           <Route
             path="/construction-sites-detail/:id"
@@ -88,9 +71,9 @@ const App = () => {
             exact
             element={isLoggedIn ? <WorkerDetailsPage /> : <Homepage />}
           />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>
-      {/* </AuthContext.Provider> */}
     </Fragment>
   );
 };

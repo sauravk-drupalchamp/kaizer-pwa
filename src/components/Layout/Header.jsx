@@ -1,6 +1,7 @@
 import { React, Fragment } from "react";
 import { Row, Col, Menu, Button } from "antd";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
 import {
   SettingOutlined,
   UserOutlined,
@@ -10,6 +11,7 @@ import "./Header.css";
 import logo from "../../assets/logo.png";
 
 const Header = (props) => {
+  const auth = useAuth();
   return (
     <Fragment>
       <Row className="header-wrapper">
@@ -88,7 +90,7 @@ const Header = (props) => {
                   <Button
                     type="primary"
                     icon={<PoweroffOutlined />}
-                    onClick={props.onLogout}
+                    onClick={auth.logout}
                     block
                   >
                     Logout

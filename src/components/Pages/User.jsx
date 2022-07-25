@@ -1,14 +1,15 @@
 import React from "react";
 import { Row, Col } from "antd";
 import UserForm from "../Forms/UserForm";
+import { useAuth } from "../../context/auth-context";
 
-const User = (props) => {
-
+const User = () => {
+  const auth =  useAuth();
   
   return (
     <Row>
       <Col span={8} offset={4}>
-        <UserForm onLogout={props.onLogout}/>
+        <UserForm onLogout={auth.logout}/>
       </Col>
     </Row>
   );

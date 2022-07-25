@@ -1,5 +1,6 @@
 export { default as Homepage } from '../components/Homepage/Homepage';
 export { default as Header } from '../components/Layout/Header';
+export { default as NoMatch } from '../components/Layout/NoMatch';
 export { default as Footer } from '../components/Layout/Footer';
 export { default as AddToolbox } from '../components/Forms/AddToolbox';
 export { default as AddToolboxPerWorker } from '../components/Forms/AddToolboxPerWorker';

@@ -1,12 +1,15 @@
-import React from "react";
+import { React } from "react";
 import axios from "axios";
 import { Col, Row, message } from "antd";
 import { Button, Form, Input } from "antd";
+import { useAuth } from "../../context/auth-context";
 import Config from "../../config";
 import bannerImage from "../../assets/homepage-banner.png";
 import "./Homepage.css";
 
 const Homepage = (props) => {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const auth = useAuth();
   const onFinish = (values) => {
     const userName = values.username;
     const passWord = values.password;
@@ -52,7 +55,8 @@ const Homepage = (props) => {
                 // console.log("roleResponse",roleResponse.data[0].mail);
 
                 if (roleResponse.data[0].roles_target_id === "Supervisor") {
-                  props.onLogin();
+                  // setIsLoggedIn(true)
+                  // props.onLogin();
                   // console.log(roleResponse.data[0].mail,"roleResponse.data[0].mail")
                   // localStorage.setItem("crsf_token", crsf_token);
                   // localStorage.setItem("logout_token", logout_token);
@@ -64,6 +68,7 @@ const Homepage = (props) => {
                   sessionStorage.setItem("password", passWord);
                   sessionStorage.setItem("email", roleResponse.data[0].mail);
                   sessionStorage.setItem("user_id", user_id);
+                  auth.login(true);
                 } else {
                   error();
                 }
