@@ -5,11 +5,13 @@ import { Navigate } from "react-router-dom";
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const log = sessionStorage.getItem('login');
+  const [isLoggedIn, setIsLoggedIn] = useState(log ? log : false);
   
   const login = () => {
     // console.log("Auth Context Login Function")
     setIsLoggedIn(true);
+    sessionStorage.setItem("login", true);
     message.success("Successfully Logged In");
     <Navigate to={'/'} />
   };
@@ -21,6 +23,7 @@ export const AuthProvider = ({ children }) => {
     sessionStorage.removeItem("password");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("user_id");
+    sessionStorage.removeItem("login");
     message.success("Logged Out!")
     setIsLoggedIn(false);
   };
