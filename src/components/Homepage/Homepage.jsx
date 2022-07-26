@@ -3,7 +3,6 @@ import axios from "axios";
 import { Col, Row, message } from "antd";
 import { Button, Form, Input } from "antd";
 import { useAuth } from "../../context/auth-context";
-import Config from "../../config";
 import bannerImage from "../../assets/homepage-banner.png";
 import "./Homepage.css";
 
@@ -19,13 +18,13 @@ const Homepage = (props) => {
     };
 
     axios
-      .get(`${Config.drupal_live_url}/session/token`)
+      .get(`${process.env.REACT_APP_DRUPAL_URL}/session/token`)
       .then((res) => {
         // console.log(res.data);
 
         axios({
           method: "post",
-          url: `${Config.drupal_live_url}/user/login?_format=json`,
+          url: `${process.env.REACT_APP_DRUPAL_URL}/user/login?_format=json`,
           headers: {
             "Content-Type": "application/json",
             "X-CSRF-Token": res.data,
@@ -47,10 +46,10 @@ const Homepage = (props) => {
             // console.log("current_user====", current_user);
             // console.log("user_id====", user_id);
 
-            // console.log(`${Config.drupal_live_url}/rest/user/${user_id}`);
+            // console.log(`${process.env.REACT_APP_DRUPAL_URL}/rest/user/${user_id}`);
 
             axios
-              .get(`${Config.drupal_live_url}/rest/user/${user_id}`)
+              .get(`${process.env.REACT_APP_DRUPAL_URL}/rest/user/${user_id}`)
               .then((roleResponse) => {
                 // console.log("roleResponse",roleResponse.data[0].mail);
 
@@ -68,7 +67,7 @@ const Homepage = (props) => {
                   sessionStorage.setItem("password", passWord);
                   sessionStorage.setItem("email", roleResponse.data[0].mail);
                   sessionStorage.setItem("user_id", user_id);
-                  auth.login(true);
+                  auth.login();
                 } else {
                   error();
                 }

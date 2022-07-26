@@ -2,13 +2,12 @@ import { React, useState, useEffect } from "react";
 import { Button, Table, Spin, message } from "antd";
 import { EyeOutlined, DeleteTwoTone } from "@ant-design/icons";
 import { Link, useParams } from "react-router-dom";
-import Config from "../../../config";
 import axios from "axios";
 
 const Tolboxes = (props) => {
   const [toolboxesInfo, setToolboxesInfo] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const toolboxesInfoUrl = `${Config.drupal_live_url}/toolboxes-listing-rest-api/${props.siteID}`;
+  const toolboxesInfoUrl = `${process.env.REACT_APP_DRUPAL_URL}/toolboxes-listing-rest-api/${props.siteID}`;
   const { tableData, columns } = getTableData();
   // const nav = useNavigate();
   const siteID = useParams();
@@ -52,11 +51,11 @@ const Tolboxes = (props) => {
         const nid = e.currentTarget.id;
 
         axios
-          .get(`${Config.drupal_live_url}/session/token`)
+          .get(`${process.env.REACT_APP_DRUPAL_URL}/session/token`)
           .then((tokenResponse) => {
             axios({
               method: "delete",
-              url: `${Config.drupal_live_url}/node/${nid}?_format=json`,
+              url: `${process.env.REACT_APP_DRUPAL_URL}/node/${nid}?_format=json`,
               headers: {
                 "X-CSRF-Token": `${tokenResponse.data}`,
               },

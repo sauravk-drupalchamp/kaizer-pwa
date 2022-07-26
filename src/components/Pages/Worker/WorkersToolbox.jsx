@@ -1,12 +1,11 @@
 import { React, useState, useEffect } from "react";
-import Config from "../../../config";
 import { WarningOutlined } from "@ant-design/icons";
 import { Table, Spin, Tag, Button } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const WorkersToolbox = (props) => {
-  const url = `${Config.drupal_live_url}/toolboxes-listing-per-worker-rest-api/${props.siteID}`;
+  const url = `${process.env.REACT_APP_DRUPAL_URL}/toolboxes-listing-per-worker-rest-api/${props.siteID}`;
   const [toolboxes, settoolboxes] = useState([]);
   const [isLoading, setisLoading] = useState(false);
   console.log(url, "url");

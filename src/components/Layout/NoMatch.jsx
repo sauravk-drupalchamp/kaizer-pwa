@@ -23,7 +23,7 @@ const NoMatch = () => {
         <Col offset={4} span={16} className='no-match-page'>
           <h1>404 Page Not Found..</h1>
           <h2>Wrong URL {location.pathname}</h2>
-          <a href='/'>Homepage</a>
+          {/* <Link to="/">Homepage</Link> */}
           {/* <h2>Redirected to homepage in {timer()} seconds</h2> */}
         </Col>
       </Row>

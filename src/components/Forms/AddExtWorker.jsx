@@ -2,7 +2,6 @@ import { React, Fragment } from "react";
 import { Col, Row } from "antd";
 import { Button, Form, Input, message, DatePicker } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
-import Config from "../../config";
 import axios from "axios";
 import "./AddExternalWorker.css";
 
@@ -15,11 +14,11 @@ const AddExtWorker = () => {
     const id = siteID.id;
     console.log("Success:", values);
     axios
-      .get(`${Config.drupal_live_url}/session/token`)
+      .get(`${process.env.REACT_APP_DRUPAL_URL}/session/token`)
       .then((tokenResponse) => {
         axios({
           method: "post",
-          url: `${Config.drupal_live_url}/node?_format=json`,
+          url: `${process.env.REACT_APP_DRUPAL_URL}/node?_format=json`,
           headers: {
             "Content-Type": "application/json",
             "X-CSRF-Token": tokenResponse.data,

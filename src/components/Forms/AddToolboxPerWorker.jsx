@@ -3,7 +3,6 @@ import { Col, Row } from "antd";
 import { Button, DatePicker, Form, Input, Upload, Select, message } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
 import moment from "moment";
-import Config from "../../config";
 import axios from "axios";
 import { InfoCircleOutlined, UploadOutlined } from "@ant-design/icons";
 import "./AddToolbox.css";
@@ -33,7 +32,7 @@ const AddToolbox = () => {
     // console.log(token)
     axios({
       method: "post",
-      url: `${Config.drupal_live_url}/file/upload/node/toolbox_per_worker/field_upload_pdf?_format=json`,
+      url: `${process.env.REACT_APP_DRUPAL_URL}/file/upload/node/toolbox_per_worker/field_upload_pdf?_format=json`,
       headers: {
         "Content-Type": "application/octet-stream",
         "X-CSRF-Token": token,
@@ -64,7 +63,7 @@ const AddToolbox = () => {
     // console.log("Success:", values);
     axios({
       method: "post",
-      url: `${Config.drupal_live_url}/node?_format=json`,
+      url: `${process.env.REACT_APP_DRUPAL_URL}/node?_format=json`,
       headers: {
         "Content-Type": "application/json",
         "X-CSRF-Token": token,
@@ -119,7 +118,7 @@ const AddToolbox = () => {
 
   useEffect(() => {
     axios
-      .get(`${Config.drupal_live_url}/session/token`)
+      .get(`${process.env.REACT_APP_DRUPAL_URL}/session/token`)
       .then((tokenResponse) => {
         setToken(tokenResponse.data);
       })

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Table, Spin, Row, Col, Progress } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import "./ConstructionSitesDetails.css";
-import Config from "../../config";
 import axios from "axios";
 
 const ConstructionSites = () => {
@@ -15,7 +14,7 @@ const ConstructionSites = () => {
 
   useEffect(() => {
     axios
-      .get(`${Config.drupal_live_url}/construction-sites`)
+      .get(`${process.env.REACT_APP_DRUPAL_URL}/construction-sites`)
       .then((response) => {
         setItems(response.data);
         setIsLoaded(true);
@@ -27,7 +26,7 @@ const ConstructionSites = () => {
         // }
         setNetworkDataReceived(false);
       });
-    // fetch(`${Config.drupal_live_url}/construction-sites`)
+    // fetch(`${process.env.REACT_APP_DRUPAL_URL}/construction-sites`)
     //   .then((response) => {
     //     return response.json();
     //   })
@@ -43,7 +42,7 @@ const ConstructionSites = () => {
       if(!window.navigator.onLine){
         if ('caches' in window) {
           console.log("Caches in Windows")
-          caches.match(`${Config.drupal_live_url}/construction-sites`)
+          caches.match(`${process.env.REACT_APP_DRUPAL_URL}/construction-sites`)
             .then(function(response) {
               if (response) {
                 return response.json();

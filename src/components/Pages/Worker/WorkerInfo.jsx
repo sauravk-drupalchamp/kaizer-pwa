@@ -2,11 +2,10 @@ import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Spin } from "antd";
 import axios from "axios";
-import config from "../../../config";
 
 const WorkerInfo = () => {
   const siteID = useParams();
-  const url = `${config.drupal_live_url}/worker-detail-rest-api/${siteID.id}`;
+  const url = `${process.env.REACT_APP_DRUPAL_URL}/worker-detail-rest-api/${siteID.id}`;
   const [workersInfo, setWorkersInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 

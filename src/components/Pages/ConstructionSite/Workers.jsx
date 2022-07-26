@@ -1,5 +1,4 @@
 import { React, useState, useEffect } from "react";
-import Config from "../../../config";
 import { Space, DatePicker, Select, Button, Form, Table, Progress, Spin } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
 import { Link, useParams } from "react-router-dom";
@@ -10,7 +9,7 @@ const Workers = (props) => {
   const siteID = useParams();
   const [workerInfo, setWorkerInfo] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const workerInfoUrl = `${Config.drupal_live_url}/workers-listing-rest-api/${props.siteID}`;
+  const workerInfoUrl = `${process.env.REACT_APP_DRUPAL_URL}/workers-listing-rest-api/${props.siteID}`;
 
   const { tableData, columns } = getTableData();
 

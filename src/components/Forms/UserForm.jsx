@@ -1,7 +1,6 @@
 import { React, Fragment, useState, useEffect } from "react";
 import axios from "axios";
 import { Spin, Button, Form, Input, Select, message } from "antd";
-import Config from "../../config";
 const { Option } = Select;
 const UserForm = (props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,15 +10,15 @@ const UserForm = (props) => {
   const userName = sessionStorage.getItem("username");
   const userID = sessionStorage.getItem("user_id");
   const pass = sessionStorage.getItem("password");
-  const userURL = `${Config.drupal_live_url}/rest-user-mail/
+  const userURL = `${process.env.REACT_APP_DRUPAL_URL}/rest-user-mail/
     ${userID}`;
 
   const onFinish = (values) => {
-    console.log("Success:", values);
-    axios.get(`${Config.drupal_live_url}/session/token`).then((tokenResponse)=>{
+    // console.log("Success:", values);
+    axios.get(`${process.env.REACT_APP_DRUPAL_URL}/session/token`).then((tokenResponse)=>{
       axios({
         method: "patch",
-        url: `${Config.drupal_live_url}/user/${userID}?_format=json`,
+        url: `${process.env.REACT_APP_DRUPAL_URL}/user/${userID}?_format=json`,
         headers: {
           "X-CSRF-Token": tokenResponse.data,
           "Content-Type": "application/json",

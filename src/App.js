@@ -17,12 +17,20 @@ import "./App.css";
 
 const App = () => {
   const auth = useAuth();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(auth.isLoggedIn);
 
   useEffect(() => {
-    setIsLoggedIn(auth.isLoggedIn);
+      setIsLoggedIn(auth.isLoggedIn);
+      if(!auth.isLoggedIn){
+        sessionStorage.removeItem("crsf_token");
+        sessionStorage.removeItem("logout_token");
+        sessionStorage.removeItem("username");
+        sessionStorage.removeItem("password");
+        sessionStorage.removeItem("email");
+        sessionStorage.removeItem("user_id");
+      }
   }, [auth.isLoggedIn]);
-
+  console.log("APP.js",isLoggedIn);
   return (
     <Fragment>
       <Router>

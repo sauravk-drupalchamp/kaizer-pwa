@@ -6,9 +6,10 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const login = (isLoggedIn) => {
-    console.log("Auth Context Login Function")
-    setIsLoggedIn(isLoggedIn);
+  
+  const login = () => {
+    // console.log("Auth Context Login Function")
+    setIsLoggedIn(true);
     message.success("Successfully Logged In");
     <Navigate to={'/'} />
   };
@@ -22,7 +23,6 @@ export const AuthProvider = ({ children }) => {
     sessionStorage.removeItem("user_id");
     message.success("Logged Out!")
     setIsLoggedIn(false);
-    // window.location.href = "/";
   };
 
   return (

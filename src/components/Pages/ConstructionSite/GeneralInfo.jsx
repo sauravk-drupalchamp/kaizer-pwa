@@ -1,12 +1,11 @@
 import { React, useState, useEffect } from "react";
-import Config from "../../../config";
 import { Spin } from "antd";
 import axios from "axios";
 
 const GeneralInfo = (props) => {
   const [generalInfo, setGeneralInfo] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const generalInfoUrl = `${Config.drupal_live_url}/construction-sites-detail-rest-api/${props.siteID}`;
+  const generalInfoUrl = `${process.env.REACT_APP_DRUPAL_URL}/construction-sites-detail-rest-api/${props.siteID}`;
 
   useEffect(() => {
     axios
