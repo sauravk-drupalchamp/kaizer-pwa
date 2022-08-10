@@ -1,6 +1,6 @@
 import { React, Fragment } from "react";
 import { Row, Col, Menu, Button } from "antd";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import {
   SettingOutlined,
@@ -29,9 +29,9 @@ const Header = (props) => {
             offset: 4,
           }}
         >
-          <Link to="/">
+          <NavLink to="/">
             <img src={logo} alt="logo" />
-          </Link>
+          </NavLink>
         </Col>
         {props.isLoggedIn && (
           <Col
@@ -50,7 +50,7 @@ const Header = (props) => {
           >
             <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
               <Menu.Item key="constructionSites">
-                <Link to="/">Construction Sites</Link>
+                <NavLink to="/">Construction Sites</NavLink>
               </Menu.Item>
               <Menu.Item disabled="true" key="archive">
                 Archive
@@ -80,11 +80,11 @@ const Header = (props) => {
                 icon={<SettingOutlined />}
               >
                 <Menu.Item key="user">
-                  <Link to="/user">
+                  <NavLink to="/user">
                     <Button type="secondary" icon={<UserOutlined />} block>
                       User
                     </Button>
-                  </Link>
+                  </NavLink>
                 </Menu.Item>
                 <Menu.Item key="logout">
                   <Button
