@@ -1,6 +1,6 @@
 .ant-col.homepage-banner.ant-col-xs-24.ant-col-sm-24.ant-col-md-24.ant-col-lg-12 img {
     width: 100%;
-    height: auto;
+    height: 94vh;
 }
 
 .ant-col.form-wrapper.ant-col-xs-24.ant-col-sm-24.ant-col-md-24.ant-col-lg-12 {
@@ -8,4 +8,25 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.form-wrapper h1 {
+    margin-bottom: 0px;
+}
+
+.form-wrapper label.ant-form-item-required {
+    font-weight: 700;
+    padding: 30px 0 0 0;
+}
+
+.form-wrapper button.ant-btn.ant-btn-primary.ant-btn-block {
+    margin: 64px 0 16px 0;
+}
+
+.forgot-password a{
+    color: #000;
+}
+
+.forgot-password a:hover{
+    color: #000;
 }

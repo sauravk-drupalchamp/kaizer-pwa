@@ -1,12 +1,18 @@
 import { Fragment, React, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Table, Spin, Row, Col, Progress } from "antd";
+import { Link } from 'react-router-dom';
+import jQuery from "jquery";
 import { EyeOutlined } from "@ant-design/icons";
 import "./ConstructionSites.css";
-import jQuery from "jquery";
 import axios from "axios";
 
-const ConstructionSites = () => {
+const ArchiveConstructionSites = () => {
+  const [items, setItems] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [networkDataReceived, setNetworkDataReceived] = useState(true)
+
+  const { tableData, columns } = getTableData();
+
   jQuery(document).ready(function (){
     const numberOfRows = jQuery(".ant-row.construction-sites-row .ant-table-wrapper.construction-sites-table tbody.ant-table-tbody tr").length;
     if(numberOfRows < 10 ) {
@@ -15,24 +21,19 @@ const ConstructionSites = () => {
       jQuery(".ant-row.construction-sites-row .ant-table-wrapper.construction-sites-table ul.ant-pagination.ant-table-pagination.ant-table-pagination-right").css("display","flex");
     }
   });
-  const [items, setItems] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [networkDataReceived, setNetworkDataReceived] = useState(true)
-
-  const { tableData, columns } = getTableData();
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_DRUPAL_URL}/construction-sites`)
+      .get(`${process.env.REACT_APP_DRUPAL_URL}/archive-construction-sites`)
       .then((response) => {
         setItems(response.data);
         setIsLoaded(true);
       })
       .catch((err) => {
         console.warn(err);
-        // if(!window.navigator.onLine){
-        //   setIsLoaded(true)
-        // }
+        if(!window.navigator.onLine){
+          setIsLoaded(true)
+        }
         setNetworkDataReceived(false);
       });
     // fetch(`${process.env.REACT_APP_DRUPAL_URL}/construction-sites`)
@@ -51,7 +52,7 @@ const ConstructionSites = () => {
       if(!window.navigator.onLine){
         if ('caches' in window) {
           console.log("Caches in Windows")
-          caches.match(`${process.env.REACT_APP_DRUPAL_URL}/construction-sites`)
+          caches.match(`${process.env.REACT_APP_DRUPAL_URL}/archive-construction-sites`)
             .then(function(response) {
               if (response) {
                 return response.json();
@@ -87,7 +88,7 @@ const ConstructionSites = () => {
             offset: 2,
           }}
         >
-          <h1>Construction Sites</h1>
+          <h1>Archive Construction Sites</h1>
         </Col>
         <Col
           xs={{
@@ -130,17 +131,19 @@ const ConstructionSites = () => {
         tool_sign: (
           <Progress
             percent={per}
-            status={per <= 50 ? "exception" : null}
+            status={per <= 70 ? "exception" : null}
             size="small"
+            pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '20', '30']}}
           />
         ),
         action_view: (
-          <Link to={`construction-sites-detail/${uniqueId}`}>
+          <Link to={`/archive-construction-sites/${uniqueId}`}>
             <EyeOutlined />
           </Link>
         ),
       };
     });
+
     const columns = [
       {
         title: "Date From",
@@ -172,4 +175,4 @@ const ConstructionSites = () => {
   }
 };
 
-export default ConstructionSites;
+export default ArchiveConstructionSites;

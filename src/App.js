@@ -10,6 +10,7 @@ import {
   ConstructionSitesDetails,
   WorkerDetailsPage,
   AddToolboxPerWorker,
+  ArchiveConstructionSites
 } from "./components";
 import { useAuth } from "./context/auth-context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -63,6 +64,11 @@ const App = () => {
             element={isLoggedIn ? <AddExtWorker /> : <Homepage />}
           />
           <Route
+            path={"/archive-construction-sites"}
+            exact
+            element={isLoggedIn ? <ArchiveConstructionSites /> : <Homepage />}
+          />
+          <Route
             path="/user"
             exact
             element={
@@ -71,6 +77,11 @@ const App = () => {
           />
           <Route
             path="/construction-sites-detail/:id"
+            exact
+            element={isLoggedIn ? <ConstructionSitesDetails /> : <Homepage />}
+          />
+          <Route
+            path="/archive-construction-sites/:id"
             exact
             element={isLoggedIn ? <ConstructionSitesDetails /> : <Homepage />}
           />

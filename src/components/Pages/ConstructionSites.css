@@ -10,6 +10,10 @@ form#workersFilter {
   font-size: 50px;
   /* line-height: 30px; */
 }
+.ant-row.construction-sites-row tbody.ant-table-tbody tr td:last-child,
+.ant-row.construction-sites-row thead.ant-table-thead tr th:last-child {
+  text-align: center;
+}
 /* General Info */
 .general-info-wrapper {
   padding: 25px;
@@ -201,8 +205,12 @@ form#workersFilter {
   border-radius: inherit;
   padding: 5px;
 }
+
+.ant-progress.ant-progress-line.ant-progress-status-normal.ant-progress-show-info.ant-progress-small .ant-progress-bg {
+  background-color: orange;
+}
 .construction-sites-table .ant-progress-inner {
-  border-radius: initial;
+  border-radius: inherit;
   box-shadow: 0 0 0 0.2pt;
 }
 .construction-sites-table .anticon-eye svg {

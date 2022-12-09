@@ -17,6 +17,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    setIsLoggedIn(false);
+    window.location.href = "/";
     sessionStorage.removeItem("crsf_token");
     sessionStorage.removeItem("logout_token");
     sessionStorage.removeItem("username");
@@ -25,7 +27,6 @@ export const AuthProvider = ({ children }) => {
     sessionStorage.removeItem("user_id");
     sessionStorage.removeItem("login");
     message.success("Logged Out!")
-    setIsLoggedIn(false);
   };
 
   return (

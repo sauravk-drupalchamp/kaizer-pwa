@@ -98,6 +98,7 @@ const Homepage = (props) => {
         <img src={bannerImage} alt="homepage-banner" />
       </Col>
       <Col xs={24} sm={24} md={24} lg={12} className="form-wrapper">
+        <div>
         <h1>Login to account</h1>
         <span>Please enter your email id and password to continue</span>
         <Form
@@ -111,7 +112,7 @@ const Homepage = (props) => {
           autoComplete="on"
         >
           <Form.Item
-            label="Username"
+            label="Email Address"
             name="username"
             rules={[
               {
@@ -135,29 +136,16 @@ const Homepage = (props) => {
           >
             <Input.Password autoComplete="true" />
           </Form.Item>
-
+          
           <Form.Item
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
           >
-            <small>Forgot Password?</small>
-          </Form.Item>
-
-          <Form.Item
-            wrapperCol={{
-              offset: 8,
-              span: 16,
-            }}
-          >
-            <Button type="primary" htmlType="submit">
-              Submit
+            <Button type="primary" htmlType="submit" block>
+              Sign In
             </Button>
           </Form.Item>
+          <p className="forgot-password"><a href="http://drupaldev.kaizerstaging.creathing.be/user/password">Forgot Password?</a></p> 
         </Form>
+        </div>
       </Col>
     </Row>
   );

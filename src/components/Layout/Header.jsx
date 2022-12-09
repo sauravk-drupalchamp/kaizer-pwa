@@ -2,8 +2,8 @@ import { React, Fragment } from "react";
 import { Row, Col, Menu, Button } from "antd";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
+import { Avatar } from 'antd';
 import {
-  SettingOutlined,
   UserOutlined,
   PoweroffOutlined,
 } from "@ant-design/icons";
@@ -52,8 +52,8 @@ const Header = (props) => {
               <Menu.Item key="constructionSites">
                 <NavLink to="/">Construction Sites</NavLink>
               </Menu.Item>
-              <Menu.Item disabled="true" key="archive">
-                Archive
+              <Menu.Item key="archive">
+                <NavLink to="/archive-construction-sites">Archive</NavLink>
               </Menu.Item>
             </Menu>
           </Col>
@@ -76,13 +76,12 @@ const Header = (props) => {
             <Menu mode="horizontal">
               <Menu.SubMenu
                 key="Setting"
-                title="Menu"
-                icon={<SettingOutlined />}
+                icon={ <Avatar shape="square" size={32} icon={<UserOutlined />} />}
               >
                 <Menu.Item key="user">
                   <NavLink to="/user">
                     <Button type="secondary" icon={<UserOutlined />} block>
-                      User
+                      My Account
                     </Button>
                   </NavLink>
                 </Menu.Item>

@@ -1,12 +1,15 @@
 import { React, useState, useEffect } from "react";
 import { Space, DatePicker, Select, Button, Form, Table, Progress, Spin } from "antd";
 import { EyeOutlined } from "@ant-design/icons";
+import moment from 'moment'
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const { Option } = Select;
 const Workers = (props) => {
   const siteID = useParams();
+  const [dateF, setDateF] = useState(0);
+  const [dateU, setDateU] = useState(0);
   const [workerInfo, setWorkerInfo] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const workerInfoUrl = `${process.env.REACT_APP_DRUPAL_URL}/workers-listing-rest-api/${props.siteID}`;
@@ -14,7 +17,9 @@ const Workers = (props) => {
   const { tableData, columns } = getTableData();
 
   const onFinish = (values) => {
-    console.log("Success:", values);
+    console.log(`${moment(values.dateFrom._d).format("YYYY-MM-DD")}`)
+    console.log(`${moment(values.dateUntill._d).format("YYYY-MM-DD")}`)
+    console.log(values.type)
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -22,11 +27,20 @@ const Workers = (props) => {
   };
 
   const onFromChange = (date, dateString) => {
-    console.log(date, dateString);
+    // console.log(date, dateString);
+    // console.log(`${moment(dateString).format("X")}`)
+    setDateF(`${moment(dateString).format("X")}`);
+    console.log("dateF",dateF)
   };
 
   const onUntillChange = (date, dateString) => {
-    console.log(date, dateString);
+    // console.log(date, dateString);
+    // console.log(`${moment(dateString).format("X")}`)
+    setDateU(`${moment(dateString).format("X")}`);
+    console.log("dateU",dateU)
+    if(dateF > dateU) {
+      alert("Start date should be smaller than end date");
+    }
   };
 
   useEffect(() => {
@@ -97,7 +111,8 @@ const Workers = (props) => {
               ]}
             >
               <Select defaultValue="Type">
-                <Option value="lucy">Lucy</Option>
+                <Option value="Checkin at work">Checkin at work</Option>
+                <Option value="External">External</Option>
               </Select>
             </Form.Item>
 
@@ -128,10 +143,10 @@ const Workers = (props) => {
             status={per < 50 ? "exception" : "active"}
             size="small" />
         ),
-        action_view: <Link to={`/worker-details/${unique_Id}`}><EyeOutlined /></Link>,
+        action_view: <EyeOutlined />,
       };
     });
-
+// <Link to={`/worker-details/${unique_Id}`}><EyeOutlined /></Link>,
     const columns = [
       {
         title: "Name",
